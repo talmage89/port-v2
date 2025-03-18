@@ -1,0 +1,1 @@
+ALTER TABLE "project_tags" ADD COLUMN "project_id" integer;
