@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { LinkedIn, Twitter, Github } from "@/components/ui/icons";
 import { ContactForm } from "./ContactForm";
 
-const Contact = () => {
+export const Contact = () => {
   return (
     <section id="contact" className="bg-gradient-to-br from-white to-slate-50 py-16 md:py-32 dark:bg-black">
       <div className="container mx-auto px-4">
@@ -92,5 +92,3 @@ const Contact = () => {
     </section>
   );
 };
-
-export default Contact;

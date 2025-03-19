@@ -1,11 +1,11 @@
 "use client";
 
-import * as React from "react";
+import { useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
-export const SkillsPagination = () => {
-  const [isPending, startTransition] = React.useTransition();
+export const SkillsPaginationButton = () => {
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

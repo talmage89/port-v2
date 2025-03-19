@@ -1,63 +1,10 @@
-import * as React from "react";
-import { Suspense } from "react";
+import { ilike, or, count } from "drizzle-orm";
 import { db } from "@/db";
 import { skills } from "@/db/schema";
-import { ilike, or } from "drizzle-orm";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { SkillsOptions } from "./SkillsOptions";
-import { SkillsPagination } from "./SkillsPagination";
-import { count } from "drizzle-orm";
-
-const PAGE_SIZE = 12;
-
-export type SkillsSearchParams = {
-  skills_category?: string;
-  skills_page?: string;
-};
-
-export default function Skills({ searchParams }: { searchParams: SkillsSearchParams }) {
-  return (
-    <section id="skills" className="bg-gradient-to-br from-white to-slate-50 py-16 md:py-32 dark:bg-black">
-      <div className="container mx-auto px-4">
-        <div className="mb-8 flex flex-col items-center">
-          <h2 className="mb-4 text-2xl font-bold md:text-4xl">My Skills</h2>
-          <p className="max-w-3xl text-center text-gray-600 dark:text-gray-400">
-            Every project I build relies on the right mix of technologies. These are the tools I've become proficient
-            with so far, and I'm constantly adding new ones to my repertoire. I always strive to create clean, effective
-            solutions that stand the test of time.
-          </p>
-        </div>
-
-        <Suspense fallback={<SkillsSkeleton />}>
-          <SkillsGrid searchParams={searchParams} />
-        </Suspense>
-      </div>
-    </section>
-  );
-}
-
-export async function SkillsSkeleton() {
-  return (
-    <>
-      <SkillsOptions categories={[]} />
-      <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
-        {[...Array(PAGE_SIZE)].map((_, index) => (
-          <Card key={index} className="animate-pulse border border-gray-200 dark:border-gray-800">
-            <CardHeader>
-              <div className="h-4 w-1/2 rounded bg-gray-200 dark:bg-gray-700"></div>
-              <div className="h-3 w-1/3 rounded bg-gray-200 dark:bg-gray-700"></div>
-            </CardHeader>
-            <CardContent>
-              <div className="mt-2 h-3 w-full rounded bg-gray-200 dark:bg-gray-700"></div>
-              <div className="mt-2 h-3 w-full rounded bg-gray-200 dark:bg-gray-700"></div>
-              <div className="mt-2 h-3 w-1/2 rounded bg-gray-200 dark:bg-gray-700"></div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </>
-  );
-}
+import { Filters } from "@/components/impl";
+import { SkillsPaginationButton } from "./SkillsPaginationButton";
+import { SkillsSearchParams, PAGE_SIZE, SKILLS_PARAM, SKILLS_PAGE_PARAM } from "./index";
 
 export async function SkillsGrid({ searchParams }: { searchParams?: SkillsSearchParams }) {
   const { skills_category, skills_page } = (await searchParams) || {};
@@ -99,7 +46,11 @@ export async function SkillsGrid({ searchParams }: { searchParams?: SkillsSearch
 
   return (
     <>
-      <SkillsOptions categories={categories.filter((c) => c !== null)} />
+      <Filters
+        options={categories.filter((c) => c !== null)}
+        optionParam={SKILLS_PARAM}
+        pageParam={SKILLS_PAGE_PARAM}
+      />
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {skillsObjs.map((skill) => (
@@ -119,7 +70,7 @@ export async function SkillsGrid({ searchParams }: { searchParams?: SkillsSearch
 
       {hasMore && (
         <div className="container mx-auto flex justify-center py-8">
-          <SkillsPagination />
+          <SkillsPaginationButton />
         </div>
       )}
     </>

@@ -1,6 +1,5 @@
 import { TAGS_PARAM } from "../page";
-import { ProjectCardSkeleton } from "./ProjectCard";
-import { Filters } from "./Filters";
+import { ProjectCardSkeleton, Filters } from "@/components/impl";
 
 export const ProjectsSkeleton = () => {
   return (

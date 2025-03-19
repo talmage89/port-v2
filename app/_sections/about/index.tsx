@@ -1,7 +1,7 @@
-import { buttonVariants } from "../ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 
-const About = () => {
+export const About = () => {
   return (
     <section id="about" className="bg-white py-16 md:py-32 dark:bg-black">
       <div className="container mx-auto px-4">
@@ -70,5 +70,3 @@ const About = () => {
     </section>
   );
 };
-
-export default About;

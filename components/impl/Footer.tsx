@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="border-t border-gray-200 bg-white py-8 dark:border-gray-800 dark:bg-black">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              © {new Date().getFullYear()} YourName. All rights reserved.
+              © {new Date().getFullYear()} Talmage Bergeson. All rights reserved.
             </p>
           </div>
 
@@ -51,5 +51,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

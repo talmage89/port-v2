@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { buttonVariants } from "../ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const Hero = () => {
+export const Hero = () => {
   return (
     <section className="flex min-h-screen items-center justify-center bg-gradient-to-br from-white to-slate-50 dark:from-black dark:to-slate-900">
       <div className="container mx-auto px-4 py-16 md:py-32">
@@ -48,5 +48,3 @@ const Hero = () => {
     </section>
   );
 };
-
-export default Hero;

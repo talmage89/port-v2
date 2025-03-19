@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { db } from "@/db";
 import { buttonVariants } from "@/components/ui/button";
-import { ProjectCard, ProjectCardSkeleton } from "@/app/projects/components/ProjectCard";
+import { ProjectCard, ProjectCardSkeleton } from "@/components/impl";
 
-export default function FeaturedProjects() {
+export const FeaturedProjects = () => {
   return (
     <section id="projects" className="bg-white py-16 md:py-32 dark:bg-black">
       <div className="container mx-auto px-4">
@@ -37,9 +37,9 @@ export default function FeaturedProjects() {
       </div>
     </section>
   );
-}
+};
 
-export async function FeaturedProjectsContent() {
+export const FeaturedProjectsContent = async () => {
   const projectsData = await db.query.projects.findMany({
     where: (projects, { eq }) => eq(projects.featured, true),
     with: { projectsToProjectTags: { with: { tag: true } } },
@@ -47,4 +47,4 @@ export async function FeaturedProjectsContent() {
   });
 
   return projectsData.map((project) => <ProjectCard key={project.id} project={project} />);
-}
+};

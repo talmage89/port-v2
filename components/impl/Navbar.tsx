@@ -1,8 +1,9 @@
 "use client";
+
 import Link from "next/link";
 import { useState } from "react";
 
-const Navbar = () => {
+export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -76,5 +77,3 @@ const Navbar = () => {
     </header>
   );
 };
-
-export default Navbar;

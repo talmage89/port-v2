@@ -1,8 +1,4 @@
-import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Skills, { SkillsSearchParams } from "@/components/sections/skills/Skills";
-import FeaturedProjects from "@/components/sections/FeaturedProjects";
-import Contact from "@/components/sections/contact/Contact";
+import { Hero, About, Skills, SkillsSearchParams, FeaturedProjects, Contact } from "./_sections";
 
 type SearchParamsType = SkillsSearchParams;
 
