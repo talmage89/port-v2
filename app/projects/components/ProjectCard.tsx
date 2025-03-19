@@ -1,15 +1,6 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
-
-type Project = {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  imageUrl?: string;
-  demoUrl?: string;
-  codeUrl?: string;
-  caseStudyUrl?: string;
-};
+import { type Project } from "@/db/types";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type ProjectCardProps = {
   project: Project;
@@ -32,14 +23,16 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
       <CardHeader>
         <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
         <CardDescription className="mt-2 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300"
-            >
-              {tag}
-            </span>
-          ))}
+          {project.projectsToProjectTags
+            .map((relation) => relation.tag)
+            .map((tag) => (
+              <span
+                key={tag.id}
+                className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300"
+              >
+                {tag.name}
+              </span>
+            ))}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -96,7 +89,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         )}
         {project.caseStudyUrl && (
           <a
-            href={project.caseStudyUrl}
+            href={`/projects/${project.id}`}
             className="flex items-center gap-1 text-xs font-medium text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400"
           >
             <span>Case Study</span>
@@ -111,6 +104,31 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             </svg>
           </a>
         )}
+      </CardFooter>
+    </Card>
+  );
+};
+
+export const ProjectCardSkeleton = () => {
+  return (
+    <Card className="group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+      <CardHeader>
+        <Skeleton className="h-6 w-48 rounded-lg" />
+        <span className="mt-2 flex flex-wrap gap-2">
+          {[...Array(3)].map((_, index) => (
+            <Skeleton key={index} className="h-4 w-20 rounded-lg" />
+          ))}
+        </span>
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="mb-2 h-4 w-full rounded-lg" />
+        <Skeleton className="mb-2 h-4 w-full rounded-lg" />
+        <Skeleton className="h-4 w-1/2 rounded-lg" />
+      </CardContent>
+      <CardFooter className="mt-auto flex flex-wrap items-center gap-6 border-t border-gray-100 pt-4 dark:border-gray-800">
+        {[...Array(3)].map((_, index) => (
+          <Skeleton key={index} className="h-4 w-16" />
+        ))}
       </CardFooter>
     </Card>
   );

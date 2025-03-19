@@ -2,7 +2,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills, { SkillsSearchParams } from "@/components/sections/skills/Skills";
 import FeaturedProjects from "@/components/sections/FeaturedProjects";
-import Contact from "@/components/sections/Contact";
+import Contact from "@/components/sections/contact/Contact";
 
 type SearchParamsType = SkillsSearchParams;
 

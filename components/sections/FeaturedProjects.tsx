@@ -1,56 +1,11 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { buttonVariants } from "../ui/button";
-import { ProjectCard } from "../projects/ProjectCard";
+import { db } from "@/db";
+import { buttonVariants } from "@/components/ui/button";
+import { ProjectCard, ProjectCardSkeleton } from "@/app/projects/components/ProjectCard";
 
-type Project = {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  imageUrl?: string;
-  demoUrl?: string;
-  codeUrl?: string;
-  caseStudyUrl?: string;
-};
-
-const FeaturedProjects = () => {
-  // Sample projects data - you would replace with your actual projects
-  const projects: Project[] = [
-    {
-      id: "project1",
-      title: "E-Commerce Platform",
-      description:
-        "A modern e-commerce platform built with Next.js, Stripe, and a headless CMS. Features include product filtering, user accounts, and secure checkout.",
-      tags: ["Next.js", "React", "Stripe", "Tailwind CSS"],
-      imageUrl: "/beach_sunset.png",
-      demoUrl: "https://example.com",
-      codeUrl: "https://github.com/yourusername/project",
-      caseStudyUrl: "/projects/e-commerce-platform",
-    },
-    {
-      id: "project2",
-      title: "Task Management App",
-      description:
-        "A collaborative task management application with real-time updates, team workspace, and integration with popular productivity tools.",
-      tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-      imageUrl: "/beach_sunset.png",
-      demoUrl: "https://example.com",
-      codeUrl: "https://github.com/yourusername/project",
-      caseStudyUrl: "/projects/task-management",
-    },
-    {
-      id: "project3",
-      title: "Personal Finance Dashboard",
-      description:
-        "An intuitive dashboard for tracking expenses, investments, and financial goals with data visualization and insights.",
-      tags: ["Vue.js", "D3.js", "Express", "PostgreSQL"],
-      imageUrl: "/beach_sunset.png",
-      demoUrl: "https://example.com",
-      caseStudyUrl: "/projects/finance-dashboard",
-    },
-  ];
-
+export default function FeaturedProjects() {
   return (
     <section id="projects" className="bg-white py-16 md:py-32 dark:bg-black">
       <div className="container mx-auto px-4">
@@ -64,9 +19,13 @@ const FeaturedProjects = () => {
         </div>
 
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          <Suspense
+            fallback={[...Array(3)].map((_, index) => (
+              <ProjectCardSkeleton key={index} />
+            ))}
+          >
+            <FeaturedProjectsContent />
+          </Suspense>
         </div>
 
         <div className="mt-12 text-center">
@@ -78,6 +37,14 @@ const FeaturedProjects = () => {
       </div>
     </section>
   );
-};
+}
 
-export default FeaturedProjects;
+export async function FeaturedProjectsContent() {
+  const projectsData = await db.query.projects.findMany({
+    where: (projects, { eq }) => eq(projects.featured, true),
+    with: { projectsToProjectTags: { with: { tag: true } } },
+    limit: 3,
+  });
+
+  return projectsData.map((project) => <ProjectCard key={project.id} project={project} />);
+}

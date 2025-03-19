@@ -68,7 +68,6 @@ export async function SkillsGrid({ searchParams }: { searchParams?: SkillsSearch
 
   const getAllCategories = async () => {
     const categoriesResult = await db.selectDistinct({ category: skills.category }).from(skills);
-
     return categoriesResult.map((item) => item.category);
   };
 
