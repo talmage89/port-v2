@@ -35,13 +35,13 @@ export function FacetedFilter({ title, options, facets, onOptionSelect, onClearF
     <div className="flex items-center gap-2">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="border-dashed hover:bg-white">
+          <Button variant="outline" className="h-auto border-dashed hover:bg-white max-w-full">
             <SlidersHorizontal />
             {title}
             {facets?.length > 0 && (
               <>
-                <Separator orientation="vertical" className="ml-2 h-4" />
-                <div className="ml-2 flex items-center gap-2">
+                {/* <Separator orientation="vertical" className="ml-2 h-4" /> */}
+                <div className="ml-2 flex flex-wrap items-center gap-2">
                   {options
                     .filter((option) => facets.includes(option.value))
                     .map((option) => (

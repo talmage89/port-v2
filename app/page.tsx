@@ -2,12 +2,14 @@ import { Hero, About, Skills, SkillsSearchParams, FeaturedProjects, Contact } fr
 
 type SearchParamsType = SkillsSearchParams;
 
-export default async function Home({ searchParams }: { searchParams: SearchParamsType }) {
+export default async function Home({ searchParams }: { searchParams: Promise<SearchParamsType> }) {
+  const searchParamsObj = await searchParams;
+  
   return (
     <div className="flex min-h-screen flex-col">
       <Hero />
       <About />
-      <Skills searchParams={searchParams} />
+      <Skills searchParams={searchParamsObj} />
       <FeaturedProjects />
       <Contact />
     </div>

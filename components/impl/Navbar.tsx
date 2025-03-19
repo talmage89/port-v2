@@ -2,6 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
+
+const navLinks = [
+  { href: "/#about", text: "About" },
+  { href: "/#skills", text: "Skills" },
+  { href: "/projects", text: "Projects" },
+  { href: "/#contact", text: "Contact" },
+];
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,70 +18,70 @@ export const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  function navLink(href: string, text: string, key: string) {
+    return (
+      <Link
+        href={href}
+        className="relative text-sm font-medium text-slate-800 transition-all after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-gradient-to-r after:from-blue-600 after:to-purple-600 after:transition-all after:duration-300 hover:text-slate-900 hover:after:w-full dark:text-gray-300 dark:after:bg-gray-300 dark:hover:text-gray-100"
+        key={key}
+      >
+        {text}
+      </Link>
+    );
+  }
+
+  function mobileNavLink(href: string, text: string, key: string) {
+    return (
+      <Link href={href} className="text-sm font-medium transition-transform duration-200 hover:translate-x-1" onClick={toggleMenu} key={key}>
+        {text}
+      </Link>
+    );
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-sm dark:border-gray-800 dark:bg-black/80">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-xs dark:border-slate-800 dark:bg-slate-950/80">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <Link href="/" className="text-xl font-bold tracking-tight">
           Talmage Bergeson
         </Link>
 
-        {/* Mobile menu button */}
-        <button className="p-2 md:hidden" onClick={toggleMenu} aria-label="Toggle menu">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="h-6 w-6"
-          >
-            {isMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+        {/* Desktop navigation and theme toggle */}
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link, index) => navLink(link.href, link.text, index.toString()))}
+          <ThemeToggle />
+        </div>
 
-        {/* Desktop navigation */}
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link href="/#about" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
-            About
-          </Link>
-          <Link href="/#skills" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
-            Skills
-          </Link>
-          <Link href="/#projects" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
-            Projects
-          </Link>
-          <Link href="/projects" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
-            All Projects
-          </Link>
-          <Link href="/#contact" className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-300">
-            Contact
-          </Link>
-        </nav>
+        {/* Mobile menu button */}
+        <div className="flex items-center gap-4 md:hidden">
+          <ThemeToggle />
+          <button className="p-2" onClick={toggleMenu} aria-label="Toggle menu">
+            <div className={`transition-transform duration-300 ${isMenuOpen ? "rotate-90" : ""}`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Mobile navigation */}
-      {isMenuOpen && (
-        <nav className="flex flex-col space-y-4 border-t border-gray-200 bg-white p-4 md:hidden dark:border-gray-800 dark:bg-black">
-          <Link href="/#about" className="text-sm font-medium" onClick={toggleMenu}>
-            About
-          </Link>
-          <Link href="/#skills" className="text-sm font-medium" onClick={toggleMenu}>
-            Skills
-          </Link>
-          <Link href="/#projects" className="text-sm font-medium" onClick={toggleMenu}>
-            Projects
-          </Link>
-          <Link href="/projects" className="text-sm font-medium" onClick={toggleMenu}>
-            All Projects
-          </Link>
-          <Link href="/#contact" className="text-sm font-medium" onClick={toggleMenu}>
-            Contact
-          </Link>
+      <div
+        className={`fixed w-full transform transition-all duration-300 ease-in-out md:hidden ${isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"}`}
+      >
+        <nav className="flex flex-col space-y-4 border-t border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-slate-950">
+          {navLinks.map((link, index) => mobileNavLink(link.href, link.text, index.toString()))}
         </nav>
-      )}
+      </div>
     </header>
   );
 };

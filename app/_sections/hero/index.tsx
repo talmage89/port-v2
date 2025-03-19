@@ -1,47 +1,64 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="flex min-h-screen items-center justify-center bg-gradient-to-br from-white to-slate-50 dark:from-black dark:to-slate-900">
-      <div className="container mx-auto px-4 py-16 md:py-32">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div className="transform transition-all duration-1000">
-            <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-6xl">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Turning complex problems into elegant solutions
-              </span>
-            </h1>
-            <h2 className="mb-6 text-xl text-slate-700 md:text-3xl dark:text-slate-300">
-              Full-Stack Software Developer
-            </h2>
-            <p className="mb-8 max-w-xl text-lg text-slate-600 dark:text-slate-400">
-              I build exceptional digital experiences with modern technologies. Specializing in creating elegant
-              solutions to complex problems.
-            </p>
+    <section className="inset-0 flex min-h-[90vh] items-center justify-center bg-[url('/grid-pattern.svg')] bg-[length:60px_60px] bg-bottom dark:bg-[url('/grid-pattern-dark.svg')]">
+      <div className="container mx-auto overflow-x-hidden px-6 py-16">
+        <div className="relative mx-auto max-w-4xl">
+          {/* Subtle gradient element - making these more diffuse */}
+          <div className="absolute top-0 -right-20 h-80 w-80 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-[60px] dark:from-blue-500/10 dark:to-purple-500/10"></div>
+          <div className="absolute bottom-0 left-0 h-60 w-60 rounded-full bg-gradient-to-tr from-purple-500/20 to-blue-500/20 blur-[60px] dark:from-purple-500/10 dark:to-blue-500/10"></div>
 
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Link href="/#projects" className={cn(buttonVariants({ size: "lg" }), "")}>
-                View My Work
+          {/* Hero content */}
+          <div className="relative z-10 space-y-6 text-center">
+            <div className="animate-fade-in-up space-y-3">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Developer.
+                </span>
+                <br />
+                <span className="mt-2 block text-slate-900 dark:text-slate-100">Problem Solver.</span>
+              </h1>
+
+              <p className="mx-auto mt-6 max-w-xl text-lg text-slate-600 dark:text-slate-400">
+                Crafting elegant solutions to complex problems with clean code and thoughtful design.
+              </p>
+            </div>
+
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
+              <Link
+                href="/#projects"
+                className={cn(
+                  buttonVariants({ variant: "colorful", size: "lg" }),
+                  "group relative overflow-hidden rounded-full px-8",
+                )}
+              >
+                View my work
+                <ArrowRight className="ml-2 inline-block h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-              <Link href="/#contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "")}>
-                Get In Touch
+              <Link
+                href="/#contact"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "rounded-full border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800/50",
+                )}
+              >
+                Get in touch
               </Link>
             </div>
-          </div>
 
-          <div className="transform transition-all duration-1000">
-            <div className="relative mx-auto aspect-square w-full max-w-lg">
-              {/* Replace this with your actual profile image or illustration */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 opacity-20 blur-3xl"></div>
-              <div className="relative z-10 flex h-full w-full items-center justify-center">
-                {/* Placeholder for your image */}
-                <div className="flex h-4/5 w-4/5 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-7xl font-bold text-white">
-                  TB
-                </div>
-              </div>
-            </div>
+            <Link
+              href="/#about"
+              className={cn(
+                buttonVariants({ variant: "default" }),
+                "mt-12 h-0 w-0 animate-bounce rounded-full p-6 shadow-lg",
+              )}
+            >
+              <ArrowDown className="size-6" />
+            </Link>
           </div>
         </div>
       </div>

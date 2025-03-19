@@ -7,12 +7,12 @@ import { ProjectCard, ProjectCardSkeleton } from "@/components/impl";
 
 export const FeaturedProjects = () => {
   return (
-    <section id="projects" className="bg-white py-16 md:py-32 dark:bg-black">
+    <section id="projects" className="bg-white py-16 md:py-32 dark:bg-slate-950">
       <div className="container mx-auto px-4">
         <div className="mb-16 flex flex-col items-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">Featured Projects</h2>
-          <div className="mb-8 h-1 w-20 rounded bg-slate-900"></div>
-          <p className="max-w-3xl text-center text-gray-600 dark:text-gray-400">
+          <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
+          <p className="max-w-3xl text-center mt-6 text-slate-600 dark:text-slate-400">
             Here are some of my recent projects. Each one solves a unique problem and demonstrates different aspects of
             my skills and expertise.
           </p>
@@ -29,9 +29,9 @@ export const FeaturedProjects = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Link href="/projects" className={buttonVariants({ size: "lg", variant: "colorful" })}>
+          <Link href="/projects" className={buttonVariants({ size: "lg", variant: "default" })}>
             View All Projects
-            <ArrowRight />
+            <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </div>
       </div>

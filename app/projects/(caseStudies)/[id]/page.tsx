@@ -55,7 +55,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<{ i
   }
 
   return (
-    <div className="min-h-screen bg-white py-16 dark:bg-black">
+    <div className="min-h-screen bg-white py-16 dark:bg-slate-950">
       <div className="container mx-auto px-4">
         {/* Navigation */}
         <div className="mb-8">

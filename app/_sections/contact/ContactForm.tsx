@@ -6,6 +6,9 @@ import {
   Button,
   Card,
   CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
   Input,
   Select,
   SelectContent,
@@ -42,6 +45,12 @@ export const ContactForm = () => {
 
   return (
     <Card className="grow">
+      <CardHeader>
+        <CardTitle>Send a message</CardTitle>
+        <CardDescription>
+          I'd love to hear from you.
+        </CardDescription>
+      </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
