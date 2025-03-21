@@ -19,10 +19,10 @@ export const Skills = ({ searchParams }: { searchParams: SkillsSearchParams }) =
         <div className="mb-8 flex flex-col items-center">
           <h2 className="mb-4 text-2xl font-bold md:text-4xl">My Skills</h2>
           <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
-          <p className="max-w-3xl text-center text-slate-600 dark:text-slate-400 mt-6">
-            Every project I build relies on the right mix of technologies. These are the tools I've become proficient
-            with so far, and I'm constantly adding new ones to my repertoire. I always strive to create clean, effective
-            solutions that stand the test of time.
+          <p className="mt-6 max-w-3xl text-center text-slate-600 dark:text-slate-400">
+            My development toolkit has been built through both professional and personal experience. These are the
+            technologies I've mastered so far, but I'm constantly expanding my capabilities. I select my tools carefully
+            to ensure I can deliver solutions that are both effective today and adaptable for tomorrow.
           </p>
         </div>
 

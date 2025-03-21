@@ -22,7 +22,7 @@ export const ProjectsGrid = async ({ selectedTags }: { selectedTags?: string[] }
       : undefined;
 
     const projectsData = await db.query.projects.findMany({
-      with: { projectsToProjectTags: { with: { tag: true } } },
+      with: { projectsToProjectTags: { with: { tag: true } }, projectCaseStudies: true },
       where: projectIds ? (projects, { inArray }) => inArray(projects.id, projectIds) : undefined,
     });
 

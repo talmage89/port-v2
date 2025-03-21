@@ -1,18 +1,19 @@
 import { Mail, MapPin, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui";
-import { LinkedIn, Twitter, Github } from "@/components/ui/icons";
+import { LinkedIn, Github } from "@/components/ui/icons";
 import { ContactForm } from "./ContactForm";
 
 export const Contact = () => {
   return (
     <section id="contact" className="bg-white py-24 dark:bg-slate-950">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4">
         <div className="">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Get In Touch</h2>
             <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
             <p className="mx-auto mt-6 max-w-2xl text-slate-600 dark:text-slate-400">
-              Have a project in mind or want to discuss potential collaboration? I'd love to hear from you.
+              Looking for a versatile developer for your team? I'm always open to new opportunities to contribute and
+              grow.
             </p>
           </div>
 
@@ -62,7 +63,7 @@ export const Contact = () => {
                     <p className="mb-3 text-sm font-medium text-slate-500 dark:text-slate-400">Connect with me</p>
                     <div className="flex items-center gap-3">
                       <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/talmage89"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-blue-400"
@@ -71,22 +72,13 @@ export const Contact = () => {
                         <Github className="h-5 w-5" />
                       </a>
                       <a
-                        href="https://linkedin.com/in/yourusername"
+                        href="https://www.linkedin.com/in/talmage-bergeson/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-blue-400"
                         aria-label="LinkedIn"
                       >
                         <LinkedIn className="h-5 w-5" />
-                      </a>
-                      <a
-                        href="https://twitter.com/yourusername"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-blue-400"
-                        aria-label="Twitter"
-                      >
-                        <Twitter className="h-5 w-5" />
                       </a>
                     </div>
                   </div>

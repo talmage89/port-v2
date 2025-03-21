@@ -5,56 +5,44 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Filters } from "@/components/impl";
 import { SkillsPaginationButton } from "./SkillsPaginationButton";
 import { SkillsSearchParams, PAGE_SIZE, SKILLS_PARAM, SKILLS_PAGE_PARAM } from "./index";
-import { Database, Layout, Server, Cpu, TestTube, Workflow, FileCode, Globe, Sparkle } from "lucide-react";
+import { Database, Layout, Server, Cpu, Workflow, Cloud, Sparkles } from "lucide-react";
 
 const getSkillIcon = (category: string | null) => {
   switch (category?.toLowerCase()) {
     case "frontend":
       return (
-        <div className="flex items-center justify-center rounded-full bg-blue-50 p-3 dark:bg-blue-900/30">
-          <Layout className="h-5 w-5 text-blue-500 dark:text-blue-300" />
+        <div className="flex items-center justify-center rounded-full bg-yellow-50 p-3 dark:bg-yellow-900/30">
+          <Layout className="h-5 w-5 text-yellow-500 dark:text-yellow-300" />
         </div>
       );
     case "backend":
       return (
-        <div className="flex items-center justify-center rounded-full bg-indigo-50 p-3 dark:bg-indigo-900/30">
-          <Server className="h-5 w-5 text-indigo-500 dark:text-indigo-300" />
+        <div className="flex items-center justify-center rounded-full bg-purple-50 p-3 dark:bg-purple-900/30">
+          <Server className="h-5 w-5 text-purple-500 dark:text-purple-300" />
         </div>
       );
     case "database":
       return (
-        <div className="flex items-center justify-center rounded-full bg-green-50 p-3 dark:bg-green-900/30">
-          <Database className="h-5 w-5 text-green-500 dark:text-green-300" />
+        <div className="flex items-center justify-center rounded-full bg-teal-50 p-3 dark:bg-teal-900/30">
+          <Database className="h-5 w-5 text-teal-500 dark:text-teal-300" />
+        </div>
+      );
+    case "cloud":
+      return (
+        <div className="flex items-center justify-center rounded-full bg-pink-50 p-3 dark:bg-pink-900/30">
+          <Cloud className="h-5 w-5 text-pink-500 dark:text-pink-300" />
         </div>
       );
     case "devops":
       return (
-        <div className="flex items-center justify-center rounded-full bg-orange-50 p-3 dark:bg-orange-900/30">
-          <Workflow className="h-5 w-5 text-orange-500 dark:text-orange-300" />
-        </div>
-      );
-    case "testing":
-      return (
-        <div className="flex items-center justify-center rounded-full bg-purple-50 p-3 dark:bg-purple-900/30">
-          <TestTube className="h-5 w-5 text-purple-500 dark:text-purple-300" />
-        </div>
-      );
-    case "framework":
-      return (
         <div className="flex items-center justify-center rounded-full bg-cyan-50 p-3 dark:bg-cyan-900/30">
-          <FileCode className="h-5 w-5 text-cyan-500 dark:text-cyan-300" />
+          <Workflow className="h-5 w-5 text-cyan-500 dark:text-cyan-300" />
         </div>
       );
-    case "mobile":
+    case "ai":
       return (
-        <div className="flex items-center justify-center rounded-full bg-emerald-50 p-3 dark:bg-emerald-900/30">
-          <Globe className="h-5 w-5 text-emerald-500 dark:text-emerald-300" />
-        </div>
-      );
-    case "design":
-      return (
-        <div className="flex items-center justify-center rounded-full bg-red-50 p-3 dark:bg-red-900/30">
-          <Sparkle className="h-5 w-5 text-red-500 dark:text-red-300" />
+        <div className="flex items-center justify-center rounded-full bg-lime-50 p-3 dark:bg-lime-900/30">
+          <Sparkles className="h-5 w-5 text-lime-500 dark:text-lime-300" />
         </div>
       );
     default:
@@ -112,9 +100,9 @@ export async function SkillsGrid({ searchParams }: { searchParams?: SkillsSearch
         pageParam={SKILLS_PAGE_PARAM}
       />
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {skillsObjs.map((skill) => (
-          <Card key={skill.name} className="border border-slate-200/60 shadow-sm dark:border-slate-800">
+          <Card key={skill.name}>
             <CardHeader className="flex flex-col-reverse items-start justify-between gap-3 sm:flex-row sm:items-center">
               <div>
                 <CardTitle className="text-base">{skill.name}</CardTitle>

@@ -42,6 +42,7 @@
     "drizzle-kit": "^0.30.5",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwind-scrollbar": "^4.0.1",
     "tailwindcss": "^4",
     "tsx": "^4.19.3",
     "typescript": "^5"

@@ -13,12 +13,12 @@ function Card({ className, children, image, ...props }: CardProps) {
   return (
     <div
       data-slot="card"
-      className={cn("bg-card text-card-foreground overflow-hidden rounded-xl border shadow-xs w-full dark:border-slate-800 dark:bg-slate-900/50", className)}
+      className={cn("bg-card text-card-foreground rounded-xl border shadow-sm w-full dark:border-slate-800 dark:bg-slate-900/50", className)}
       {...props}
     >
       {image && (
-        <div className="relative h-40 sm:h-48">
-          <Image src={image.src} alt={image.alt} fill className="object-cover" />
+        <div className="relative h-40 sm:h-48 rounded-tl-xl rounded-tr-xl overflow-hidden flex items-start justify-center">
+          <Image src={image.src} alt={image.alt} fill className="object-cover object-top" />
         </div>
       )}
       <div className="flex flex-col gap-4 sm:gap-6 py-4 sm:py-6">{children}</div>

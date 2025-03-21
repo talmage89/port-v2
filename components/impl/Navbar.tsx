@@ -32,7 +32,12 @@ export const Navbar = () => {
 
   function mobileNavLink(href: string, text: string, key: string) {
     return (
-      <Link href={href} className="text-sm font-medium transition-transform duration-200 hover:translate-x-1" onClick={toggleMenu} key={key}>
+      <Link
+        href={href}
+        className="text-sm font-medium transition-transform duration-200 hover:translate-x-1"
+        onClick={toggleMenu}
+        key={key}
+      >
         {text}
       </Link>
     );

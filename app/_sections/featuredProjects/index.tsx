@@ -42,7 +42,7 @@ export const FeaturedProjects = () => {
 export const FeaturedProjectsContent = async () => {
   const projectsData = await db.query.projects.findMany({
     where: (projects, { eq }) => eq(projects.featured, true),
-    with: { projectsToProjectTags: { with: { tag: true } } },
+    with: { projectsToProjectTags: { with: { tag: true } }, projectCaseStudies: true },
     limit: 3,
   });
 

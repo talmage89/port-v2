@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { ArrowDown, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { HeroText } from "./HeroText";
 
 export const Hero = () => {
   return (
     <section className="inset-0 flex min-h-[90vh] items-center justify-center bg-[url('/grid-pattern.svg')] bg-[length:60px_60px] bg-bottom dark:bg-[url('/grid-pattern-dark.svg')]">
-      <div className="container mx-auto overflow-x-hidden px-6 py-16">
+      <div className="container mx-auto overflow-x-hidden px-4 py-16">
         <div className="relative mx-auto max-w-4xl">
           {/* Subtle gradient element - making these more diffuse */}
           <div className="absolute top-0 -right-20 h-80 w-80 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-[60px] dark:from-blue-500/10 dark:to-purple-500/10"></div>
@@ -15,16 +16,11 @@ export const Hero = () => {
           {/* Hero content */}
           <div className="relative z-10 space-y-6 text-center">
             <div className="animate-fade-in-up space-y-3">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Developer.
-                </span>
-                <br />
-                <span className="mt-2 block text-slate-900 dark:text-slate-100">Problem Solver.</span>
-              </h1>
+              <HeroText />
 
               <p className="mx-auto mt-6 max-w-xl text-lg text-slate-600 dark:text-slate-400">
-                Crafting elegant solutions to complex problems with clean code and thoughtful design.
+                Self-taught developer turning ambitious ideas into reality through persistence, versatility, and
+                continuous learning.
               </p>
             </div>
 

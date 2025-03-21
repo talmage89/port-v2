@@ -6,15 +6,15 @@ export const projects = pgTable("projects", {
   title: varchar("title", { length: 255 }).notNull(),
   description: text("description"),
   imageUrl: text("image_url"),
-  demoUrl: text("demo_url"),
+  liveUrl: text("live_url"),
   codeUrl: text("code_url"),
-  caseStudyUrl: text("case_study_url"),
   featured: boolean("featured").default(false),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const projectRelations = relations(projects, ({ many }) => ({
   projectsToProjectTags: many(projectsToProjectTags),
+  projectCaseStudies: many(projectCaseStudies),
 }));
 
 export const projectTags = pgTable("project_tags", {
@@ -63,8 +63,12 @@ export const projectCaseStudies = pgTable("project_case_studies", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const projectCaseStudiesRelations = relations(projectCaseStudies, ({ many }) => ({
+export const projectCaseStudiesRelations = relations(projectCaseStudies, ({ one, many }) => ({
   technologies: many(projectCaseStudiesTechnologies),
+  project: one(projects, {
+    fields: [projectCaseStudies.projectId],
+    references: [projects.id],
+  }),
 }));
 
 export const projectCaseStudiesTechnologies = pgTable("project_case_studies_technologies", {

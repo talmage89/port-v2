@@ -4,7 +4,7 @@ type SearchParamsType = SkillsSearchParams;
 
 export default async function Home({ searchParams }: { searchParams: Promise<SearchParamsType> }) {
   const searchParamsObj = await searchParams;
-  
+
   return (
     <div className="flex min-h-screen flex-col">
       <Hero />

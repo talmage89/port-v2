@@ -36,6 +36,20 @@
       "when": 1742351311837,
       "tag": "0004_complete_invaders",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1742434710288,
+      "tag": "0005_cool_wilson_fisk",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1742507325244,
+      "tag": "0006_cool_ken_ellis",
+      "breakpoints": true
     }
   ]
 }

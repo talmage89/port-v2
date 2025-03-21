@@ -35,7 +35,7 @@ export function FacetedFilter({ title, options, facets, onOptionSelect, onClearF
     <div className="flex items-center gap-2">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="h-auto border-dashed hover:bg-white max-w-full">
+          <Button variant="outline" className="h-auto max-w-full border-dashed hover:bg-white">
             <SlidersHorizontal />
             {title}
             {facets?.length > 0 && (
@@ -66,7 +66,9 @@ export function FacetedFilter({ title, options, facets, onOptionSelect, onClearF
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0" align="start">
           <Command>
-            <CommandInput placeholder={title} />
+            <form>
+              <CommandInput placeholder={title} autoComplete="off" tabIndex={-1} />
+            </form>
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
               <CommandGroup>

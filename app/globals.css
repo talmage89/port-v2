@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
+@plugin "tailwind-scrollbar";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -138,12 +139,29 @@
 }
 
 @keyframes pulse-slow {
-  0%, 100% {
+  0%,
+  49%,
+  100% {
+    opacity: 1;
+  }
+  50%,
+  99% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.8;
+    opacity: 0;
   }
+}
+
+.cursor {
+  animation: blink 1s infinite;
 }
 
 .animate-fade-in-up {

@@ -19,11 +19,11 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             }
           : undefined
       }
-      className="group overflow-hidden border border-slate-200/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-slate-800"
+      className="group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
     >
       <CardHeader className="relative">
         {project.featured && (
-          <span className="absolute -right-1 -top-0 rounded-bl-md rounded-tr-md bg-gradient-to-r from-blue-600 to-purple-600 px-3 py-1 text-xs font-medium text-white">
+          <span className="absolute top-0 right-0 rounded-bl-md bg-gradient-to-r from-blue-600 to-purple-600 px-3 py-1 text-xs font-medium text-white">
             Featured
           </span>
         )}
@@ -45,14 +45,14 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         <p className="text-sm text-slate-600 dark:text-slate-400">{project.description}</p>
       </CardContent>
       <CardFooter className="mt-auto flex flex-wrap items-center gap-6 border-t border-slate-200 pt-4 dark:border-slate-800">
-        {project.demoUrl && (
+        {project.liveUrl && (
           <a
-            href={project.demoUrl}
+            href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-xs font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
           >
-            <span>Live Demo</span>
+            <span>View Site</span>
             <ExternalLink className="ml-1 h-3 w-3" />
           </a>
         )}
@@ -67,7 +67,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             <Github className="ml-1 h-3 w-3" />
           </a>
         )}
-        {project.caseStudyUrl && (
+        {project.projectCaseStudies.length > 0 && (
           <a
             href={`/projects/${project.id}`}
             className="flex items-center gap-1 text-xs font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
@@ -83,7 +83,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 
 export const ProjectCardSkeleton = () => {
   return (
-    <Card className="border border-slate-200/60 shadow-sm group transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-slate-800">
+    <Card className="group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
       <CardHeader>
         <Skeleton className="h-6 w-48 rounded-lg" />
         <span className="mt-2 flex flex-wrap gap-2">

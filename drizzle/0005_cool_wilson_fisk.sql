@@ -1,0 +1,1 @@
+ALTER TABLE "skills" ADD COLUMN "order" integer DEFAULT 0;

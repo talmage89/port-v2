@@ -26,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <ThemeProvider defaultTheme="light" storageKey="theme">
-      <html lang="en" className="scroll-smooth">
+      <html
+        lang="en"
+        className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-slate-300 hover:scrollbar-thumb-slate-400 dark:scrollbar-thumb-slate-600 dark:hover:scrollbar-thumb-slate-500 scroll-smooth"
+      >
         <body className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}>
           <Navbar />
           <main className="flex flex-grow flex-col">{children}</main>
