@@ -4,8 +4,7 @@ import { Send } from "lucide-react";
 import { buttonVariants } from "@/components/ui";
 import { ProjectsSkeleton } from "./components/ProjectsSkeleton";
 import { ProjectsGrid } from "./components/ProjectsGrid";
-
-export const TAGS_PARAM = "projects_tags";
+import { TAGS_PARAM } from "./config";
 
 type ProjectsSearchParams = {
   [TAGS_PARAM]?: string;

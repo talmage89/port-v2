@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { projectTags } from "@/db/schema";
 import { Filters, ProjectCard } from "@/components/impl";
-import { TAGS_PARAM } from "../page";
+import { TAGS_PARAM } from "../config";
 
 export const ProjectsGrid = async ({ selectedTags }: { selectedTags?: string[] }) => {
   const getTags = async () => {

@@ -30,10 +30,10 @@ export const About = () => {
                 fulfillment automation.
               </p>
               <p className="text-slate-600 dark:text-slate-400">
-                What sets me apart is my combination of grit and humility. I push through obstacles relentlessly, but I'm
-                also quick to recognize when my approach needs rethinking. While I don't have a traditional CS degree,
-                I've turned this challenge into motivation to consistently demonstrate my value through exceptional work
-                and continuous learning.
+                What sets me apart is my combination of grit and humility. I push through obstacles relentlessly, but
+                I'm also quick to recognize when my approach needs rethinking. While I don't have a traditional CS
+                degree, I've turned this challenge into motivation to consistently demonstrate my value through
+                exceptional work and continuous learning.
               </p>
             </div>
 

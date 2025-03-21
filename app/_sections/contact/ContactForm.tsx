@@ -47,9 +47,7 @@ export const ContactForm = () => {
     <Card className="grow">
       <CardHeader>
         <CardTitle>Send a message</CardTitle>
-        <CardDescription>
-          I'd love to hear from you.
-        </CardDescription>
+        <CardDescription>I'd love to hear from you.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit}>

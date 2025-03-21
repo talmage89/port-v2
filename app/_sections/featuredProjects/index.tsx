@@ -12,7 +12,7 @@ export const FeaturedProjects = () => {
         <div className="mb-16 flex flex-col items-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">Featured Projects</h2>
           <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
-          <p className="max-w-3xl text-center mt-6 text-slate-600 dark:text-slate-400">
+          <p className="mt-6 max-w-3xl text-center text-slate-600 dark:text-slate-400">
             Here are some of my recent projects. Each one solves a unique problem and demonstrates different aspects of
             my skills and expertise.
           </p>

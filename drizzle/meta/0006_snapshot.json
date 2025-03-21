@@ -114,12 +114,8 @@
           "name": "project_case_studies_project_id_projects_id_fk",
           "tableFrom": "project_case_studies",
           "tableTo": "projects",
-          "columnsFrom": [
-            "project_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["project_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -159,12 +155,8 @@
           "name": "project_case_studies_technologies_case_study_id_project_case_studies_id_fk",
           "tableFrom": "project_case_studies_technologies",
           "tableTo": "project_case_studies",
-          "columnsFrom": [
-            "case_study_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["case_study_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -286,12 +278,8 @@
           "name": "projects_to_tags_project_id_projects_id_fk",
           "tableFrom": "projects_to_tags",
           "tableTo": "projects",
-          "columnsFrom": [
-            "project_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["project_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -299,12 +287,8 @@
           "name": "projects_to_tags_tag_id_project_tags_id_fk",
           "tableFrom": "projects_to_tags",
           "tableTo": "project_tags",
-          "columnsFrom": [
-            "tag_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tag_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -312,10 +296,7 @@
       "compositePrimaryKeys": {
         "projects_to_tags_project_id_tag_id_pk": {
           "name": "projects_to_tags_project_id_tag_id_pk",
-          "columns": [
-            "project_id",
-            "tag_id"
-          ]
+          "columns": ["project_id", "tag_id"]
         }
       },
       "uniqueConstraints": {},
