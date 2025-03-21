@@ -1,6 +1,5 @@
 "use client";
-import * as React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { MDXEditor } from "@/components/impl/MDXEditor";
 import { TagInput } from "@/components/impl/TagInput";
@@ -23,7 +22,7 @@ interface Project {
   title: string;
 }
 
-export default function EditCaseStudyPage({ params }: { params: React.Usable<{ id: string }> }) {
+export default function EditCaseStudyPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = React.use(params);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);

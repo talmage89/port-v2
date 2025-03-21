@@ -1,6 +1,5 @@
 "use client";
-import * as React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getProject, updateProject, deleteProject } from "./actions";
 import { TagInput } from "@/components/impl/TagInput";
@@ -17,7 +16,7 @@ interface Project {
   order: string;
 }
 
-export default function EditProjectPage({ params }: { params: React.Usable<{ id: string }> }) {
+export default function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = React.use(params);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);

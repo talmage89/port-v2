@@ -1,6 +1,5 @@
 "use client";
-import * as React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { deleteSkill, getSkill, updateSkill } from "./actions";
 
@@ -27,7 +26,7 @@ interface Skill {
   order: number;
 }
 
-export default function EditSkillPage({ params }: { params: React.Usable<{ id: string }> }) {
+export default function EditSkillPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = React.use(params);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
