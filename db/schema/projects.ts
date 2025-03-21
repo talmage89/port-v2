@@ -10,6 +10,7 @@ export const projects = pgTable("projects", {
   codeUrl: text("code_url"),
   featured: boolean("featured").default(false),
   createdAt: timestamp("created_at").defaultNow(),
+  order: integer("order").default(0),
 });
 
 export const projectRelations = relations(projects, ({ many }) => ({
@@ -31,10 +32,10 @@ export const projectsToProjectTags = pgTable(
   {
     projectId: integer("project_id")
       .notNull()
-      .references(() => projects.id),
+      .references(() => projects.id, { onDelete: "cascade" }),
     tagId: integer("tag_id")
       .notNull()
-      .references(() => projectTags.id),
+      .references(() => projectTags.id, { onDelete: "cascade" }),
   },
   (t) => [primaryKey({ columns: [t.projectId, t.tagId] })],
 );
@@ -54,7 +55,7 @@ export const projectCaseStudies = pgTable("project_case_studies", {
   id: serial("id").primaryKey(),
   projectId: integer("project_id")
     .notNull()
-    .references(() => projects.id),
+    .references(() => projects.id, { onDelete: "cascade" }),
   problem: text("problem"),
   approach: text("approach"),
   solution: text("solution"),
@@ -76,7 +77,7 @@ export const projectCaseStudiesTechnologies = pgTable("project_case_studies_tech
   name: varchar("name", { length: 100 }).notNull(),
   caseStudyId: integer("case_study_id")
     .notNull()
-    .references(() => projectCaseStudies.id),
+    .references(() => projectCaseStudies.id, { onDelete: "cascade" }),
 });
 
 export const projectCaseStudiesTechnologiesRelations = relations(projectCaseStudiesTechnologies, ({ one }) => ({
