@@ -41,7 +41,7 @@ export const HeroText = () => {
       <span className="relative block overflow-hidden text-slate-900 dark:text-slate-100">
         Your next
         <span
-          className={`ml-4 inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text pb-1 text-transparent transition-all duration-500 ease-in-out ${visible ? "translate-y-0 opacity-100" : "translate-y-0.5 opacity-0"} `}
+          className={`ml-3 inline-block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text pb-1 text-transparent transition-all duration-500 ease-in-out ${visible ? "translate-y-0 opacity-100" : "translate-y-0.5 opacity-0"} `}
         >
           {words[wordIndex]}.
         </span>

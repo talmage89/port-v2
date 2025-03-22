@@ -14,10 +14,8 @@ function NavItem({ href, label, current }: NavItemProps) {
   return (
     <Link
       href={href}
-      className={`flex items-center px-3 py-2 text-sm font-medium rounded-md ${
-        current
-          ? "bg-gray-900 text-white"
-          : "text-gray-300 hover:bg-gray-700 hover:text-white"
+      className={`flex items-center rounded-md px-3 py-2 text-sm font-medium ${
+        current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white"
       }`}
     >
       {label}
@@ -42,17 +40,12 @@ export default function AdminNavigation() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <span className="text-white text-lg font-bold">Admin Portal</span>
+              <span className="text-lg font-bold text-white">Admin Portal</span>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 {navigation.map((item) => (
-                  <NavItem
-                    key={item.name}
-                    href={item.href}
-                    label={item.name}
-                    current={pathname === item.href}
-                  />
+                  <NavItem key={item.name} href={item.href} label={item.name} current={pathname === item.href} />
                 ))}
               </div>
             </div>
@@ -70,17 +63,12 @@ export default function AdminNavigation() {
 
       {/* Mobile menu, show/hide based on menu state */}
       <div className="md:hidden">
-        <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+        <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
           {navigation.map((item) => (
-            <NavItem
-              key={item.name}
-              href={item.href}
-              label={item.name}
-              current={pathname === item.href}
-            />
+            <NavItem key={item.name} href={item.href} label={item.name} current={pathname === item.href} />
           ))}
         </div>
       </div>
     </div>
   );
-} 
+}

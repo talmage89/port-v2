@@ -4,6 +4,7 @@ import { z } from "zod";
 import { db } from "@/db";
 import { formSubmissions } from "@/db/schema";
 import { type ContactFormData } from "./ContactForm";
+import TelegramService from "@/lib/services/telegram";
 
 type SubmitFormState = {
   success: boolean;
@@ -52,6 +53,11 @@ export const submitForm = async (_prevState: SubmitFormState, form: ContactFormD
       return { success: false, fieldErrors: validatedFields.error.flatten().fieldErrors };
     }
     await db.insert(formSubmissions).values(form);
+
+    await TelegramService.sendMessage(
+      `New contact form submission!\n\nFrom:\n${name}\n${email}\n\nIntent: ${reason}\n\n${message}`,
+    );
+
     return { success: true };
   } catch (error) {
     return { success: false, rootError: "An unknown error occurred" };

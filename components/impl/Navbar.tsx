@@ -44,7 +44,7 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-xs dark:border-slate-800 dark:bg-slate-950/80">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xs dark:border-slate-800 dark:bg-slate-950/90">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <Link href="/" className="text-xl font-bold tracking-tight">
           Talmage Bergeson
@@ -81,9 +81,9 @@ export const Navbar = () => {
 
       {/* Mobile navigation */}
       <div
-        className={`fixed w-full transform transition-all duration-300 ease-in-out md:hidden ${isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"}`}
+        className={`fixed z-40 w-full transform border-y border-gray-200 bg-white/95 p-4 shadow-sm transition-all duration-300 ease-in-out md:hidden dark:border-gray-800 dark:bg-slate-950/95 ${isMenuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"}`}
       >
-        <nav className="flex flex-col space-y-4 border-t border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-slate-950">
+        <nav className="flex flex-col space-y-4">
           {navLinks.map((link, index) => mobileNavLink(link.href, link.text, index.toString()))}
         </nav>
       </div>

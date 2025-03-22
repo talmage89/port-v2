@@ -12,18 +12,13 @@ export default async function FormSubmissionsPage() {
   }
 
   // Fetch submissions directly on the server
-  const submissions = await db
-    .select()
-    .from(formSubmissions)
-    .orderBy(desc(formSubmissions.submittedAt));
+  const submissions = await db.select().from(formSubmissions).orderBy(desc(formSubmissions.submittedAt));
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Form Submissions</h1>
-        <p className="mt-1 text-sm text-gray-600">
-          View and manage contact form submissions
-        </p>
+        <p className="mt-1 text-sm text-gray-600">View and manage contact form submissions</p>
       </div>
 
       {submissions.length === 0 ? (
@@ -37,25 +32,25 @@ export default async function FormSubmissionsPage() {
               <tr>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                  className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
                 >
                   Name
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                  className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
                 >
                   Email
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                  className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
                 >
                   Reason
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                  className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
                 >
                   Date
                 </th>
@@ -67,25 +62,22 @@ export default async function FormSubmissionsPage() {
             <tbody className="divide-y divide-gray-200 bg-white">
               {submissions.map((submission) => (
                 <tr key={submission.id}>
-                  <td className="whitespace-nowrap px-6 py-4">
+                  <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">{submission.name || "Not provided"}</div>
                   </td>
-                  <td className="whitespace-nowrap px-6 py-4">
+                  <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">{submission.email}</div>
                   </td>
-                  <td className="whitespace-nowrap px-6 py-4">
+                  <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">{submission.reason || "Not specified"}</div>
                   </td>
-                  <td className="whitespace-nowrap px-6 py-4">
+                  <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">
                       {submission.submittedAt ? new Date(submission.submittedAt).toLocaleDateString() : "Unknown"}
                     </div>
                   </td>
-                  <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                    <a
-                      href={`/admin/form-submissions/${submission.id}`}
-                      className="text-blue-600 hover:text-blue-900"
-                    >
+                  <td className="px-6 py-4 text-right text-sm font-medium whitespace-nowrap">
+                    <a href={`/admin/form-submissions/${submission.id}`} className="text-blue-600 hover:text-blue-900">
                       View Details
                     </a>
                   </td>
@@ -97,4 +89,4 @@ export default async function FormSubmissionsPage() {
       )}
     </div>
   );
-} 
+}

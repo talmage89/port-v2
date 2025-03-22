@@ -25,10 +25,12 @@ export async function getProjects() {
     }
 
     // Fetch all projects for the dropdown
-    const allProjects = await db.select({
-      id: projects.id,
-      title: projects.title,
-    }).from(projects);
+    const allProjects = await db
+      .select({
+        id: projects.id,
+        title: projects.title,
+      })
+      .from(projects);
 
     return {
       success: true,
@@ -56,7 +58,11 @@ export async function createCaseStudy(data: any) {
     }
 
     // Check if project exists
-    const projectExists = await db.select().from(projects).where(eq(projects.id, validatedData.data.projectId)).limit(1);
+    const projectExists = await db
+      .select()
+      .from(projects)
+      .where(eq(projects.id, validatedData.data.projectId))
+      .limit(1);
 
     if (projectExists.length === 0) {
       throw new Error("Project not found");
@@ -64,7 +70,7 @@ export async function createCaseStudy(data: any) {
 
     // Create in a transaction
     let caseStudyId: number = 0;
-    
+
     await db.transaction(async (tx) => {
       // Create case study
       const [newCaseStudy] = await tx
@@ -78,16 +84,16 @@ export async function createCaseStudy(data: any) {
           results: validatedData.data.results,
         })
         .returning({ id: projectCaseStudies.id });
-      
+
       caseStudyId = newCaseStudy.id;
 
       // Handle technologies if provided
       if (validatedData.data.technologies && validatedData.data.technologies.length > 0) {
         const techsToInsert = validatedData.data.technologies.map((name: string) => ({
           name,
-          caseStudyId: caseStudyId
+          caseStudyId: caseStudyId,
         }));
-        
+
         await tx.insert(projectCaseStudiesTechnologies).values(techsToInsert);
       }
     });
@@ -97,4 +103,4 @@ export async function createCaseStudy(data: any) {
     console.error("Error creating case study:", error);
     return { success: false, error: error instanceof Error ? error.message : "Internal Server Error" };
   }
-} 
+}

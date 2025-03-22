@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { createSkill } from "./actions";
 
 // Define the skill categories
-type SkillCategory = 
+type SkillCategory =
   | "frontend"
   | "backend"
   | "database"
@@ -34,7 +34,7 @@ export default function NewSkillPage() {
     name: "",
     category: "other",
     description: "",
-    order: 0
+    order: 0,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -93,7 +93,7 @@ export default function NewSkillPage() {
               id="name"
               value={skill.name}
               onChange={(e) => handleChange("name", e.target.value)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               required
             />
           </div>
@@ -107,7 +107,7 @@ export default function NewSkillPage() {
               id="category"
               value={skill.category}
               onChange={(e) => handleChange("category", e.target.value as SkillCategory)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               required
             >
               <option value="frontend">Frontend</option>
@@ -133,7 +133,7 @@ export default function NewSkillPage() {
               id="description"
               value={skill.description || ""}
               onChange={(e) => handleChange("description", e.target.value)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               rows={4}
             />
           </div>
@@ -148,7 +148,7 @@ export default function NewSkillPage() {
               id="order"
               value={skill.order}
               onChange={(e) => handleChange("order", parseInt(e.target.value) || 0)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
             />
             <p className="mt-1 text-xs text-gray-500">Lower numbers display first</p>
           </div>
@@ -173,4 +173,4 @@ export default function NewSkillPage() {
       </form>
     </div>
   );
-} 
+}

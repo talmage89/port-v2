@@ -6,14 +6,11 @@ import { HeroText } from "./HeroText";
 
 export const Hero = () => {
   return (
-    <section className="inset-0 flex min-h-[90vh] items-center justify-center bg-[url('/grid-pattern.svg')] bg-[length:60px_60px] bg-bottom dark:bg-[url('/grid-pattern-dark.svg')]">
-      <div className="container mx-auto overflow-x-hidden px-4 py-16">
-        <div className="relative mx-auto max-w-4xl">
-          {/* Subtle gradient element - making these more diffuse */}
-          <div className="absolute top-0 -right-20 h-80 w-80 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-[60px] dark:from-blue-500/10 dark:to-purple-500/10"></div>
-          <div className="absolute bottom-0 left-0 h-60 w-60 rounded-full bg-gradient-to-tr from-purple-500/20 to-blue-500/20 blur-[60px] dark:from-purple-500/10 dark:to-blue-500/10"></div>
-
-          {/* Hero content */}
+    <section className="inset-0 flex min-h-[90svh] bg-[url('/grid-pattern.svg')] bg-[length:60px_60px] bg-bottom dark:bg-[url('/grid-pattern-dark.svg')]">
+      <div className="flex grow items-center justify-center self-stretch overflow-x-hidden">
+        <div className="relative px-4 pt-8">
+          <div className="absolute top-0 -right-50 h-80 w-80 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-[60px] dark:from-blue-500/10 dark:to-purple-500/10"></div>
+          <div className="absolute bottom-0 -left-30 h-60 w-60 rounded-full bg-gradient-to-tr from-purple-500/20 to-blue-500/20 blur-[60px] dark:from-purple-500/10 dark:to-blue-500/10"></div>
           <div className="relative z-10 space-y-6 text-center">
             <div className="animate-fade-in-up space-y-3">
               <HeroText />

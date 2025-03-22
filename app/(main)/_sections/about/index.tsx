@@ -106,10 +106,9 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Resume button */}
           <div className="mt-12 flex justify-center">
             <a
-              href="/resume.pdf"
+              href="/files/resume.pdf"
               target="_blank"
               className={buttonVariants({
                 variant: "default",

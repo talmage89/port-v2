@@ -54,7 +54,7 @@ export async function createProject(data: any) {
 
     // Create project in a transaction
     let projectId: number = 0; // Initialize with a default value
-    
+
     await db.transaction(async (tx) => {
       // Create project first
       const [newProject] = await tx
@@ -68,7 +68,7 @@ export async function createProject(data: any) {
           featured: validatedData.data.featured,
         })
         .returning({ id: projects.id });
-      
+
       projectId = newProject.id;
 
       // Handle tags if provided
@@ -76,18 +76,11 @@ export async function createProject(data: any) {
         // Get or create tags and create relationships
         for (const tagName of validatedData.data.tags) {
           // Find if tag exists
-          let tag = await tx
-            .select()
-            .from(projectTags)
-            .where(eq(projectTags.name, tagName))
-            .limit(1);
+          let tag = await tx.select().from(projectTags).where(eq(projectTags.name, tagName)).limit(1);
 
           // Create tag if it doesn't exist
           if (tag.length === 0) {
-            const newTag = await tx
-              .insert(projectTags)
-              .values({ name: tagName })
-              .returning();
+            const newTag = await tx.insert(projectTags).values({ name: tagName }).returning();
             tag = newTag;
           }
 
@@ -105,4 +98,4 @@ export async function createProject(data: any) {
     console.error("Error creating project:", error);
     return { success: false, error: error instanceof Error ? error.message : "Internal Server Error" };
   }
-} 
+}

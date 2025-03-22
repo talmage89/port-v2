@@ -13,20 +13,20 @@ export default async function SkillsAdminPage() {
   }
 
   // Fetch skills grouped by category
-  const skillsList = await db
-    .select()
-    .from(skills)
-    .orderBy(asc(skills.category), asc(skills.order), asc(skills.name));
+  const skillsList = await db.select().from(skills).orderBy(asc(skills.category), asc(skills.order), asc(skills.name));
 
   // Group skills by category
-  const skillsByCategory = skillsList.reduce((acc, skill) => {
-    const category = skill.category || "uncategorized";
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(skill);
-    return acc;
-  }, {} as Record<string, typeof skillsList>);
+  const skillsByCategory = skillsList.reduce(
+    (acc, skill) => {
+      const category = skill.category || "uncategorized";
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(skill);
+      return acc;
+    },
+    {} as Record<string, typeof skillsList>,
+  );
 
   // Sort categories for display
   const categories = Object.keys(skillsByCategory).sort();
@@ -36,9 +36,7 @@ export default async function SkillsAdminPage() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Skills</h1>
-          <p className="mt-1 text-sm text-gray-600">
-            Manage your skills and categories
-          </p>
+          <p className="mt-1 text-sm text-gray-600">Manage your skills and categories</p>
         </div>
         <Link
           href="/admin/skills/new"
@@ -51,10 +49,7 @@ export default async function SkillsAdminPage() {
       {categories.length === 0 ? (
         <div className="rounded-md bg-gray-50 p-4 text-center">
           <p className="text-gray-700">No skills yet</p>
-          <Link 
-            href="/admin/skills/new"
-            className="mt-2 inline-block text-sm text-blue-600 hover:underline"
-          >
+          <Link href="/admin/skills/new" className="mt-2 inline-block text-sm text-blue-600 hover:underline">
             Add your first skill
           </Link>
         </div>
@@ -63,16 +58,14 @@ export default async function SkillsAdminPage() {
           {categories.map((category) => (
             <div key={category} className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow">
               <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
-                <h3 className="text-lg font-medium capitalize text-gray-900">{category}</h3>
+                <h3 className="text-lg font-medium text-gray-900 capitalize">{category}</h3>
               </div>
               <div className="divide-y divide-gray-200">
                 {skillsByCategory[category].map((skill) => (
                   <div key={skill.id} className="flex items-center justify-between p-4">
                     <div>
                       <h4 className="text-base font-medium text-gray-900">{skill.name}</h4>
-                      {skill.description && (
-                        <p className="mt-1 text-sm text-gray-500">{skill.description}</p>
-                      )}
+                      {skill.description && <p className="mt-1 text-sm text-gray-500">{skill.description}</p>}
                     </div>
                     <div className="flex space-x-2">
                       <Link
@@ -91,4 +84,4 @@ export default async function SkillsAdminPage() {
       )}
     </div>
   );
-} 
+}

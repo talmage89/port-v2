@@ -21,9 +21,7 @@ function AdminLayoutContent({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-gray-50">
       {showNavigation && <AdminNavigation />}
-      <div className={showNavigation ? "py-6" : ""}>
-        {children}
-      </div>
+      <div className={showNavigation ? "py-6" : ""}>{children}</div>
     </div>
   );
 }
@@ -34,4 +32,4 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       <AdminLayoutContent>{children}</AdminLayoutContent>
     </SessionProvider>
   );
-} 
+}

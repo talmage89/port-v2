@@ -97,7 +97,7 @@ export const Contact = () => {
                   </p>
                   <div className="mt-6 flex">
                     <a
-                      href="/resume.pdf"
+                      href="/files/resume.pdf"
                       target="_blank"
                       className="inline-flex items-center text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
                     >

@@ -11,7 +11,7 @@ export const Footer = () => {
             </p>
           </div>
 
-          <div className="flex gap-6">
+          <div className="flex items-center gap-6">
             <a
               href="https://github.com/talmage89"
               target="_blank"

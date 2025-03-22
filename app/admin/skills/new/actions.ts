@@ -52,4 +52,4 @@ export async function createSkill(data: any) {
     console.error("Error creating skill:", error);
     return { success: false, error: error instanceof Error ? error.message : "Internal Server Error" };
   }
-} 
+}

@@ -35,16 +35,36 @@ export function ThemeProvider({
 
     if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
       setTheme(savedTheme);
-    }
-  }, [defaultTheme, storageKey]);
+    } else {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
+      setTheme(systemTheme);
+    }
+  }, [storageKey]);
+
+  // Apply theme changes to DOM
   useEffect(() => {
     const root = window.document.documentElement;
-
     root.classList.remove("light", "dark");
     root.classList.add(theme);
     localStorage.setItem(storageKey, theme);
   }, [theme, storageKey]);
+
+  // Listen for system preference changes if no saved preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleChange = () => {
+      // Only update theme if there's no saved preference
+      if (!localStorage.getItem(storageKey)) {
+        const systemTheme = mediaQuery.matches ? "dark" : "light";
+        setTheme(systemTheme);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [storageKey]);
 
   const value = {
     theme,

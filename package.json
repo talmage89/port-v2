@@ -10,7 +10,8 @@
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
     "studio": "drizzle-kit studio",
-    "create-user": "tsx lib/scripts/create-user.ts"
+    "create-user": "tsx lib/scripts/create-user.ts",
+    "telegram": "tsx lib/scripts/get-telegram-updates.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
