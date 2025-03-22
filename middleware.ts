@@ -20,7 +20,7 @@ export async function middleware(req: NextRequest) {
   });
 
   if (isPublicPath && token) {
-    return NextResponse.redirect(new URL("/admin/dashboard", req.url));
+    return NextResponse.redirect(new URL("/admin", req.url));
   }
 
   if (!isPublicPath && !token) {

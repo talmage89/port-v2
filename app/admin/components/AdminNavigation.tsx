@@ -27,7 +27,6 @@ export default function AdminNavigation() {
   const pathname = usePathname();
 
   const navigation = [
-    { name: "Dashboard", href: "/admin/dashboard" },
     { name: "Form Submissions", href: "/admin/form-submissions" },
     { name: "Projects", href: "/admin/projects" },
     { name: "Skills", href: "/admin/skills" },
@@ -40,7 +39,9 @@ export default function AdminNavigation() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <span className="text-lg font-bold text-white">Admin Portal</span>
+              <Link href="/admin" className="text-lg font-bold text-white">
+                Admin Portal
+              </Link>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">

@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import SessionDebug from "../components/SessionDebug";
+import SessionDebug from "./components/SessionDebug";
 
 interface AdminCardProps {
   title: string;
@@ -52,4 +52,4 @@ export default async function AdminDashboard() {
       <SessionDebug />
     </div>
   );
-}
+} 

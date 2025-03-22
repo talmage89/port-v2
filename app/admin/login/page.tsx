@@ -30,7 +30,7 @@ export default function AdminLogin() {
       }
 
       if (result?.ok) {
-        router.push("/admin/dashboard");
+        router.push("/admin");
         router.refresh();
       }
     } catch (error) {

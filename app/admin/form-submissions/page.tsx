@@ -78,7 +78,7 @@ export default async function FormSubmissionsPage() {
                   </td>
                   <td className="px-6 py-4 text-right text-sm font-medium whitespace-nowrap">
                     <a href={`/admin/form-submissions/${submission.id}`} className="text-blue-600 hover:text-blue-900">
-                      View Details
+                      View
                     </a>
                   </td>
                 </tr>
