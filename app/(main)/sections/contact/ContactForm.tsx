@@ -67,6 +67,7 @@ export const ContactForm = () => {
               placeholder="Your Name"
               disabled={pending || state.success}
               error={!dirty?.name ? state.fieldErrors?.name?.[0] : undefined}
+              autoComplete="name"
             />
           </div>
 
@@ -86,6 +87,7 @@ export const ContactForm = () => {
               placeholder="your.email@example.com"
               error={!dirty?.email ? state.fieldErrors?.email?.[0] : undefined}
               disabled={pending || state.success}
+              autoComplete="email"
             />
           </div>
 
@@ -100,8 +102,13 @@ export const ContactForm = () => {
                 setDirty((prev) => ({ ...prev, reason: true }));
               }}
               disabled={pending || state.success}
+              name="subject"
             >
-              <SelectTrigger className="w-full" error={!dirty?.reason ? state.fieldErrors?.reason?.[0] : undefined}>
+              <SelectTrigger
+                id="subject"
+                className="w-full"
+                error={!dirty?.reason ? state.fieldErrors?.reason?.[0] : undefined}
+              >
                 <SelectValue placeholder="Select an inquiry type" />
               </SelectTrigger>
               <SelectContent>

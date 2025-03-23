@@ -1,4 +1,4 @@
-import { Hero, About, Skills, SkillsSearchParams, FeaturedProjects, Contact } from "./_sections";
+import { Hero, About, Skills, SkillsSearchParams, FeaturedProjects, Contact } from "./sections";
 
 type SearchParamsType = SkillsSearchParams;
 
