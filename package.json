@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "build": "NODE_OPTIONS='--max-old-space-size=512' next build",
+    "start": "NODE_OPTIONS='--max-old-space-size=512' next start",
     "format": "prettier --write .",
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
