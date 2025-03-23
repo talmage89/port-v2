@@ -1,0 +1,49 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Verify SSH connection
+        run: ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} github-deploy@${{ secrets.DROPLET_IP }} "echo Connection successful"
+
+      - name: Create DB backup
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.DROPLET_IP }}
+          username: github-deploy
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Create a backup directory if it doesn't exist
+            mkdir -p ~/backups
+            # Backup the database (adjust as needed for your PostgreSQL configuration)
+            pg_dump -h localhost -U ${{ secrets.DB_USER }} -d ${{ secrets.DB_NAME }} -f ~/backups/backup_$(date +%Y%m%d_%H%M%S).sql
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.DROPLET_IP }}
+          username: github-deploy
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ${{ secrets.PROJECT_PATH }}
+            git pull
+            npm install
+            npm run build
+            npm run migrate
+            sudo -u ${{ secrets.USER }} pm2 restart ${{ secrets.PM2_APP_NAME }}
