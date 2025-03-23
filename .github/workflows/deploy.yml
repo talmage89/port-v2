@@ -17,8 +17,8 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
 
-      - name: Verify SSH connection
-        run: ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} github-deploy@${{ secrets.DROPLET_IP }} "echo Connection successful"
+      - name: Debug SSH connection
+        run: ssh -v -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} github-deploy@${{ secrets.DROPLET_IP }} "echo Connection successful"
 
       - name: Create DB backup
         uses: appleboy/ssh-action@v1.2.2
