@@ -16,6 +16,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: npm run build
+
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.9.1
         with:
@@ -47,6 +58,24 @@ jobs:
             cd ${{ secrets.PROJECT_PATH }}
             git pull
             npm install
-            NODE_OPTIONS="--max-old-space-size=512" npm run build
             npm run migrate
-            sudo -u ${{ secrets.USER }} pm2 restart ${{ secrets.PM2_APP_NAME }}
+
+      - name: Upload build files
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.DROPLET_IP }}
+          username: github-deploy
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: ".next/,public/,package.json"
+          target: "${{ secrets.PROJECT_PATH }}"
+          strip_components: 0
+
+      - name: Restart application
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.DROPLET_IP }}
+          username: github-deploy
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: sudo -u ${{ secrets.USER }} pm2 restart ${{ secrets.PM2_APP_NAME }}
