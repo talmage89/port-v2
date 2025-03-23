@@ -47,7 +47,7 @@ jobs:
           script: |
             cd ${{ secrets.PROJECT_PATH }}
             git pull
-            npm install
+            npm install --legacy-peer-deps
             npm run build
             npm run migrate
             sudo -u ${{ secrets.USER }} pm2 restart ${{ secrets.PM2_APP_NAME }}
