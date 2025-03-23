@@ -6,7 +6,7 @@ import { HeroText } from "./HeroText";
 
 export const Hero = () => {
   return (
-    <section 
+    <section
       className="inset-0 flex min-h-[90svh] bg-[url('/grid-pattern.svg')] bg-[length:60px_60px] bg-bottom dark:bg-[url('/grid-pattern-dark.svg')]"
       aria-labelledby="hero-heading"
     >
@@ -16,7 +16,9 @@ export const Hero = () => {
           <div className="absolute bottom-0 -left-30 h-60 w-60 rounded-full bg-gradient-to-tr from-purple-500/20 to-blue-500/20 blur-[60px] dark:from-purple-500/10 dark:to-blue-500/10"></div>
           <div className="relative z-10 space-y-6 text-center">
             <header className="animate-fade-in-up space-y-3">
-              <h1 id="hero-heading" className="sr-only">Talmage Bergeson - Full-stack Developer</h1>
+              <h1 id="hero-heading" className="sr-only">
+                Talmage Bergeson - Full-stack Developer
+              </h1>
               <HeroText />
 
               <p className="mx-auto mt-6 max-w-xl text-lg text-slate-700 dark:text-slate-300">

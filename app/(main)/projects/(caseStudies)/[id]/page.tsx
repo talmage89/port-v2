@@ -17,25 +17,25 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const projectId = parseInt(id);
-  
+
   if (isNaN(projectId)) {
     return {
       title: "Project Not Found",
       description: "The requested project could not be found.",
     };
   }
-  
+
   const project = await db.query.projects.findFirst({
     where: (projects, { eq }) => eq(projects.id, projectId),
   });
-  
+
   if (!project) {
     return {
       title: "Project Not Found",
       description: "The requested project could not be found.",
     };
   }
-  
+
   return {
     title: project.title,
     description: project.description || undefined,
@@ -66,8 +66,8 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<{ i
   }
 
   const caseStudy = project.projectCaseStudies[0];
-  const tags = project.projectsToProjectTags.map(relation => relation.tag.name);
-  const technologies = caseStudy.technologies.map(tech => tech.name);
+  const tags = project.projectsToProjectTags.map((relation) => relation.tag.name);
+  const technologies = caseStudy.technologies.map((tech) => tech.name);
 
   // Create structured data for the project
   const projectStructuredData = {

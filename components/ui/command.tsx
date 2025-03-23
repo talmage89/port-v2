@@ -9,28 +9,41 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 // Custom command component to replace cmdk
 const CommandPrimitive = {
   Root: ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div className={className} {...props}>{children}</div>
+    <div className={className} {...props}>
+      {children}
+    </div>
   ),
   Input: ({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
     <input className={className} {...props} />
   ),
   List: ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div className={className} {...props}>{children}</div>
+    <div className={className} {...props}>
+      {children}
+    </div>
   ),
   Empty: ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div className={className} {...props}>{children}</div>
+    <div className={className} {...props}>
+      {children}
+    </div>
   ),
   Group: ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div className={className} {...props}>{children}</div>
+    <div className={className} {...props}>
+      {children}
+    </div>
   ),
-  Item: ({ className, onSelect, children, ...props }: React.HTMLAttributes<HTMLDivElement> & { onSelect?: () => void }) => (
-    <div 
-      className={className} 
+  Item: ({
+    className,
+    onSelect,
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLDivElement> & { onSelect?: () => void }) => (
+    <div
+      className={className}
       onClick={onSelect}
       role="option"
       tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' && onSelect) {
+        if (e.key === "Enter" && onSelect) {
           onSelect();
         }
       }}
@@ -108,7 +121,7 @@ function CommandList({ className, ...props }: React.ComponentProps<typeof Comman
 }
 
 function CommandEmpty({ ...props }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
-  return <CommandPrimitive.Empty data-slot="command-empty" className="py-6 text-center text-sm" {...props} />;
+  return <CommandPrimitive.Empty data-slot="command-empty" className="pt-4 pb-2 text-center text-sm" {...props} />;
 }
 
 function CommandGroup({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Group>) {

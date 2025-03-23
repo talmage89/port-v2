@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { Check, PlusCircle, SlidersHorizontal, X } from "lucide-react";
 
@@ -30,6 +32,14 @@ type FacetedFilterProps = {
 
 export function FacetedFilter({ title, options, facets, onOptionSelect, onClearFilters }: FacetedFilterProps) {
   const [isPending, startTransition] = React.useTransition();
+
+  const [search, setSearch] = React.useState("");
+  const [filteredOptions, setFilteredOptions] = React.useState(options);
+
+  React.useEffect(() => {
+    const filteredOptions = options.filter((option) => option.label.toLowerCase().includes(search.toLowerCase()));
+    setFilteredOptions(filteredOptions);
+  }, [search]);
 
   return (
     <div className="flex items-center gap-2">
@@ -67,12 +77,18 @@ export function FacetedFilter({ title, options, facets, onOptionSelect, onClearF
         <PopoverContent className="w-[200px] p-0" align="start">
           <Command>
             <form>
-              <CommandInput placeholder={title} autoComplete="off" tabIndex={-1} />
+              <CommandInput
+                placeholder={title}
+                autoComplete="off"
+                tabIndex={-1}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </form>
             <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
+              {filteredOptions.length === 0 && <CommandEmpty>No results found.</CommandEmpty>}
               <CommandGroup>
-                {options.map((option) => {
+                {filteredOptions.map((option) => {
                   const isSelected = facets.includes(option.value);
                   return (
                     <CommandItem

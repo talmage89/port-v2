@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Projects | Talmage Bergeson",
     description: "Browse through my portfolio of projects built with various modern web technologies and frameworks.",
-  }
+  },
 };
 
 export default async function ProjectsPage({ searchParams }: { searchParams: Promise<ProjectsSearchParams> }) {
