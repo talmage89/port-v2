@@ -5,9 +5,10 @@ import { ExternalLink, Github, Code } from "lucide-react";
 
 type ProjectCardProps = {
   project: Project;
+  priority?: boolean;
 };
 
-export const ProjectCard = ({ project }: ProjectCardProps) => {
+export const ProjectCard = ({ project, priority }: ProjectCardProps) => {
   return (
     <Card
       key={project.id}
@@ -16,6 +17,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           ? {
               src: project.imageUrl,
               alt: project.title,
+              priority,
             }
           : undefined
       }
@@ -47,6 +49,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
       <CardFooter className="mt-auto flex flex-wrap items-center gap-6 border-t border-slate-200 pt-4 dark:border-slate-800">
         {project.liveUrl && (
           <a
+            aria-label="View Site"
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -58,6 +61,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         )}
         {project.codeUrl && (
           <a
+            aria-label="View Code"
             href={project.codeUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -69,6 +73,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         )}
         {project.projectCaseStudies.length > 0 && (
           <a
+            aria-label="View Case Study"
             href={`/projects/${project.id}`}
             className="flex items-center gap-1 text-xs font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
           >

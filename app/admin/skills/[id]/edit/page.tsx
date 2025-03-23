@@ -210,6 +210,7 @@ export default function EditSkillPage({ params }: { params: Promise<{ id: string
 
         <div className="flex justify-end space-x-3">
           <button
+            aria-label="Delete Skill"
             type="button"
             onClick={() => handleDelete()}
             className="rounded-md border border-gray-300 bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none disabled:bg-red-300"
@@ -217,6 +218,7 @@ export default function EditSkillPage({ params }: { params: Promise<{ id: string
             Delete Skill
           </button>
           <button
+            aria-label="Cancel"
             type="button"
             onClick={() => router.back()}
             className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
@@ -224,6 +226,7 @@ export default function EditSkillPage({ params }: { params: Promise<{ id: string
             Cancel
           </button>
           <button
+            aria-label="Save Changes"
             type="submit"
             disabled={isSaving}
             className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none disabled:bg-blue-300"

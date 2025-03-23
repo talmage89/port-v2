@@ -8,7 +8,7 @@ export const About = () => {
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
           <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
-          <p className="mx-auto mt-8 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+          <p className="mx-auto mt-8 max-w-2xl text-lg text-slate-700 dark:text-slate-300">
             I'm a full-stack developer with a knack for building intuitive, performant software.
           </p>
         </div>
@@ -17,19 +17,19 @@ export const About = () => {
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="col-span-1 rounded-xl border border-slate-200 bg-white/50 p-8 shadow-sm backdrop-blur-sm lg:col-span-2 dark:border-slate-800 dark:bg-slate-900/50">
               <h3 className="mb-4 text-xl font-semibold">My Journey</h3>
-              <p className="mb-8 text-slate-600 dark:text-slate-400">
+              <p className="mb-8 text-slate-700 dark:text-slate-300">
                 My path in tech began through intensive self-learning and a web development bootcamp. I first recognized
                 how perfect programming was for me when I successfully built a portfolio site with a 3D user avatar with
                 close to zero experience -- this was a challenge well beyond my initial skill level and it proved I
                 could learn whatever was necessary to bring my vision to life.
               </p>
-              <p className="mb-8 text-slate-600 dark:text-slate-400">
+              <p className="mb-8 text-slate-700 dark:text-slate-300">
                 Though I've been in the industry for under 3 years, I've already developed a reputation as a versatile
                 problem-solver who thrives wearing multiple hats. My proudest achievement so far has been building a
                 comprehensive e-commerce platform with Django and React that handles everything from payments to order
                 fulfillment automation.
               </p>
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-slate-700 dark:text-slate-300">
                 What sets me apart is my combination of grit and humility. I push through obstacles relentlessly, but
                 I'm also quick to recognize when my approach needs rethinking. While I don't have a traditional CS
                 degree, I've turned this challenge into motivation to consistently demonstrate my value through
@@ -42,15 +42,16 @@ export const About = () => {
               <ul className="space-y-4">
                 <li className="flex flex-wrap items-start">
                   <span className="w-24 font-medium text-slate-800 dark:text-slate-300">Name:</span>
-                  <span className="ml-auto text-slate-600 dark:text-slate-400">Talmage Bergeson</span>
+                  <span className="ml-auto text-slate-700 dark:text-slate-300">Talmage Bergeson</span>
                 </li>
                 <li className="flex flex-wrap items-start">
                   <span className="w-24 font-medium text-slate-800 dark:text-slate-300">Location:</span>
-                  <span className="ml-auto text-slate-600 dark:text-slate-400">Salt Lake City, Utah</span>
+                  <span className="ml-auto text-slate-700 dark:text-slate-300">Salt Lake City, Utah</span>
                 </li>
                 <li className="flex flex-wrap items-start">
                   <span className="w-24 font-medium text-slate-800 dark:text-slate-300">Email:</span>
                   <a
+                    aria-label="Email"
                     href="mailto:talmage.bergeson@gmail.com"
                     className="ml-auto text-blue-600 hover:underline dark:text-blue-400"
                   >
@@ -59,7 +60,7 @@ export const About = () => {
                 </li>
                 <li className="flex flex-wrap items-start">
                   <span className="w-24 font-medium text-slate-800 dark:text-slate-300">Status:</span>
-                  <span className="ml-auto text-slate-600 dark:text-slate-400">Available for work</span>
+                  <span className="ml-auto text-slate-700 dark:text-slate-300">Available for work</span>
                 </li>
               </ul>
             </div>
@@ -78,7 +79,7 @@ export const About = () => {
                     <Layers size={22} />
                   </div>
                   <h4 className="mb-2 text-base font-medium">Clean Architecture</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                  <p className="text-sm text-slate-700 dark:text-slate-300">
                     Building clean, maintainable codebases with clear separation of concerns and modular design.
                   </p>
                 </div>
@@ -88,7 +89,7 @@ export const About = () => {
                     <Globe size={22} />
                   </div>
                   <h4 className="mb-2 text-base font-medium">Real-World Solutions</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                  <p className="text-sm text-slate-700 dark:text-slate-300">
                     Focusing on creating intuitive, accessible software that provides real value to users.
                   </p>
                 </div>
@@ -98,7 +99,7 @@ export const About = () => {
                     <Code size={22} />
                   </div>
                   <h4 className="mb-2 text-base font-medium">Continuous Learning</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                  <p className="text-sm text-slate-700 dark:text-slate-300">
                     Constantly learning and adapting to new technologies and best practices in the industry.
                   </p>
                 </div>
@@ -108,6 +109,7 @@ export const About = () => {
 
           <div className="mt-12 flex justify-center">
             <a
+              aria-label="View Resume"
               href="/files/resume.pdf"
               target="_blank"
               className={buttonVariants({

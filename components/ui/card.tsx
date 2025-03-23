@@ -6,6 +6,8 @@ type CardProps = React.ComponentProps<"div"> & {
   image?: {
     src: string;
     alt: string;
+    sizes?: string;
+    priority?: boolean;
   };
 };
 
@@ -21,7 +23,14 @@ function Card({ className, children, image, ...props }: CardProps) {
     >
       {image && (
         <div className="relative flex h-40 items-start justify-center overflow-hidden rounded-tl-xl rounded-tr-xl sm:h-48">
-          <Image src={image.src} alt={image.alt} fill className="object-cover object-top" />
+          <Image
+            src={image.src}
+            alt={image.alt}
+            sizes={image.sizes || "(max-width: 768px) 100vw, 50vw"}
+            fill
+            className="object-cover object-top"
+            priority={image.priority}
+          />
         </div>
       )}
       <div className="flex flex-col gap-4 py-4 sm:gap-6 sm:py-6">{children}</div>

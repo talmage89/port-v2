@@ -20,7 +20,7 @@ export const SkillsPaginationButton = () => {
   };
 
   return (
-    <Button variant="colorful" onClick={setSearchParamsNextPage} disabled={isPending} size="lg">
+    <Button aria-label="Load More" variant="colorful" onClick={setSearchParamsNextPage} disabled={isPending} size="lg">
       {isPending ? "Loading..." : "Load More"}
     </Button>
   );

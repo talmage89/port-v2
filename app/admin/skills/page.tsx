@@ -39,6 +39,7 @@ export default async function SkillsAdminPage() {
           <p className="mt-1 text-sm text-gray-600">Manage your skills and categories</p>
         </div>
         <Link
+          aria-label="Add Skill"
           href="/admin/skills/new"
           className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700"
         >
@@ -49,7 +50,11 @@ export default async function SkillsAdminPage() {
       {categories.length === 0 ? (
         <div className="rounded-md bg-gray-50 p-4 text-center">
           <p className="text-gray-700">No skills yet</p>
-          <Link href="/admin/skills/new" className="mt-2 inline-block text-sm text-blue-600 hover:underline">
+          <Link
+            href="/admin/skills/new"
+            className="mt-2 inline-block text-sm text-blue-600 hover:underline"
+            aria-label="Add your first skill"
+          >
             Add your first skill
           </Link>
         </div>
@@ -71,6 +76,7 @@ export default async function SkillsAdminPage() {
                       <Link
                         href={`/admin/skills/${skill.id}/edit`}
                         className="rounded bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-100"
+                        aria-label="Edit Skill"
                       >
                         Edit
                       </Link>

@@ -21,6 +21,7 @@ export const Navbar = () => {
   function navLink(href: string, text: string, key: string) {
     return (
       <Link
+        aria-label={text}
         href={href}
         className="relative text-sm font-medium text-slate-800 transition-all after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-gradient-to-r after:from-blue-600 after:to-purple-600 after:transition-all after:duration-300 hover:text-slate-900 hover:after:w-full dark:text-gray-300 dark:after:bg-gray-300 dark:hover:text-gray-100"
         key={key}
@@ -33,6 +34,7 @@ export const Navbar = () => {
   function mobileNavLink(href: string, text: string, key: string) {
     return (
       <Link
+        aria-label={text}
         href={href}
         className="text-sm font-medium transition-transform duration-200 hover:translate-x-1"
         onClick={toggleMenu}
@@ -46,7 +48,7 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xs dark:border-slate-800 dark:bg-slate-950/90">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
-        <Link href="/" className="text-xl font-bold tracking-tight">
+        <Link href="/" className="text-xl font-bold tracking-tight" aria-label="Home">
           Talmage Bergeson
         </Link>
 

@@ -26,6 +26,7 @@ export default async function ProjectsAdminPage() {
           <p className="mt-1 text-sm text-gray-600">Manage your portfolio projects</p>
         </div>
         <Link
+          aria-label="Add Project"
           href="/admin/projects/new"
           className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700"
         >
@@ -36,7 +37,11 @@ export default async function ProjectsAdminPage() {
       {projectList.length === 0 ? (
         <div className="rounded-md bg-gray-50 p-4 text-center">
           <p className="text-gray-700">No projects yet</p>
-          <Link href="/admin/projects/new" className="mt-2 inline-block text-sm text-blue-600 hover:underline">
+          <Link
+            href="/admin/projects/new"
+            className="mt-2 inline-block text-sm text-blue-600 hover:underline"
+            aria-label="Create your first project"
+          >
             Create your first project
           </Link>
         </div>
@@ -65,6 +70,7 @@ export default async function ProjectsAdminPage() {
                   <Link
                     href={`/admin/projects/${project.id}/edit`}
                     className="rounded bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 hover:bg-blue-100"
+                    aria-label="Edit Project"
                   >
                     Edit
                   </Link>
@@ -72,6 +78,7 @@ export default async function ProjectsAdminPage() {
                     <Link
                       href={`/admin/case-studies/${project.projectCaseStudies[0].id}/edit`}
                       className="rounded bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 hover:bg-purple-100"
+                      aria-label="Edit Case Study"
                     >
                       Case Study
                     </Link>

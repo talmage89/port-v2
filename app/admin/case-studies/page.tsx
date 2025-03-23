@@ -46,6 +46,7 @@ export default async function CaseStudiesAdminPage() {
           <p className="mt-1 text-sm text-gray-600">Manage detailed case studies for your projects</p>
         </div>
         <Link
+          aria-label="Add Case Study"
           href="/admin/case-studies/new"
           className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700"
         >
@@ -56,7 +57,11 @@ export default async function CaseStudiesAdminPage() {
       {result.length === 0 && projectsWithoutCaseStudies.length === 0 ? (
         <div className="rounded-md bg-gray-50 p-4 text-center">
           <p className="text-gray-700">No projects or case studies available</p>
-          <Link href="/admin/projects/new" className="mt-2 inline-block text-sm text-blue-600 hover:underline">
+          <Link
+            href="/admin/projects/new"
+            className="mt-2 inline-block text-sm text-blue-600 hover:underline"
+            aria-label="Create your first project"
+          >
             Create your first project
           </Link>
         </div>
@@ -93,6 +98,7 @@ export default async function CaseStudiesAdminPage() {
                       </div>
                       <div className="flex justify-end">
                         <Link
+                          aria-label="Edit Case Study"
                           href={`/admin/case-studies/${caseStudy.id}/edit`}
                           className="rounded bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-100"
                         >

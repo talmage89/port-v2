@@ -12,6 +12,7 @@ interface AdminCardProps {
 function AdminCard({ title, description, href }: AdminCardProps) {
   return (
     <Link
+      aria-label={`Manage ${title}`}
       href={href}
       className="block rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
     >

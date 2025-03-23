@@ -156,7 +156,14 @@ export const ContactForm = () => {
             />
           </div>
 
-          <Button type="submit" disabled={pending || state.success} variant="colorful" size="lg" className="w-full">
+          <Button
+            type="submit"
+            disabled={pending || state.success}
+            variant="colorful"
+            size="lg"
+            className="w-full"
+            aria-label="Send Message"
+          >
             {pending ? "Sending..." : "Send Message"}
           </Button>
 

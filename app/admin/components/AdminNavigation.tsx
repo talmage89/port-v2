@@ -13,6 +13,7 @@ interface NavItemProps {
 function NavItem({ href, label, current }: NavItemProps) {
   return (
     <Link
+      aria-label={`Go to ${label}`}
       href={href}
       className={`flex items-center rounded-md px-3 py-2 text-sm font-medium ${
         current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white"
@@ -39,7 +40,7 @@ export default function AdminNavigation() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link href="/admin" className="text-lg font-bold text-white">
+              <Link aria-label="Home" href="/admin" className="text-lg font-bold text-white">
                 Admin Portal
               </Link>
             </div>
@@ -53,6 +54,7 @@ export default function AdminNavigation() {
           </div>
           <div>
             <button
+              aria-label="Sign Out"
               onClick={() => signOut({ callbackUrl: "/admin/login" })}
               className="rounded-md bg-red-600 px-3 py-2 text-sm text-white hover:bg-red-700"
             >

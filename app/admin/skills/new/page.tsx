@@ -156,6 +156,7 @@ export default function NewSkillPage() {
 
         <div className="flex justify-end space-x-3">
           <button
+            aria-label="Cancel"
             type="button"
             onClick={() => router.back()}
             className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
@@ -163,6 +164,7 @@ export default function NewSkillPage() {
             Cancel
           </button>
           <button
+            aria-label="Create Skill"
             type="submit"
             disabled={isSaving}
             className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none disabled:bg-blue-300"

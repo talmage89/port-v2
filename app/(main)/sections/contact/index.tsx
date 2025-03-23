@@ -11,7 +11,7 @@ export const Contact = () => {
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Get In Touch</h2>
             <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
-            <p className="mx-auto mt-6 max-w-2xl text-slate-600 dark:text-slate-400">
+            <p className="mx-auto mt-6 max-w-2xl text-slate-700 dark:text-slate-300">
               Looking for a versatile developer for your team? I'm always open to new opportunities to contribute and
               grow.
             </p>
@@ -37,6 +37,7 @@ export const Contact = () => {
                     <div>
                       <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Email</p>
                       <a
+                        aria-label="Email"
                         href="mailto:talmage.bergeson@gmail.com"
                         className="font-medium text-blue-600 hover:underline dark:text-blue-400"
                       >
@@ -97,6 +98,7 @@ export const Contact = () => {
                   </p>
                   <div className="mt-6 flex">
                     <a
+                      aria-label="View Resume"
                       href="/files/resume.pdf"
                       target="_blank"
                       className="inline-flex items-center text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"

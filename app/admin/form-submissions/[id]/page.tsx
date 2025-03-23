@@ -30,6 +30,7 @@ export default async function FormSubmissionDetailPage({ params }: { params: Pro
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900">Form Submission Details</h1>
         <Link
+          aria-label="Back to All Submissions"
           href="/admin/form-submissions"
           className="rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
         >

@@ -35,7 +35,7 @@ export function FacetedFilter({ title, options, facets, onOptionSelect, onClearF
     <div className="flex items-center gap-2">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="h-auto max-w-full border-dashed hover:bg-white">
+          <Button variant="outline" className="h-auto max-w-full border-dashed hover:bg-white" aria-label="Filter">
             <SlidersHorizontal />
             {title}
             {facets?.length > 0 && (

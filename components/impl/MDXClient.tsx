@@ -18,7 +18,13 @@ export const MDXClient = ({ content }: { content: string }) => {
           ul: ({ children }) => <ul className="list-disc pl-4 sm:pl-5">{children}</ul>,
           li: ({ children }) => <li className="text-sm sm:text-base">{children}</li>,
           a: ({ href, children }) => (
-            <a href={href} target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400">
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-indigo-700 dark:text-indigo-300"
+              aria-label={`Open ${children}`}
+            >
               {children}
             </a>
           ),

@@ -281,6 +281,7 @@ const Skills = () => {
         <div className="mb-12 flex flex-wrap justify-center gap-4">
           {(["all", "frontend", "backend", "design", "tools"] as const).map((category) => (
             <button
+              aria-label={`Filter by ${category}`}
               key={category}
               onClick={() => setActiveCategory(category)}
               className={`cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors ${

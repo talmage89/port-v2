@@ -46,7 +46,12 @@ export const TagInput = ({ tags, availableTags = [], onChange, placeholder = "Ad
         {tags.map((tag) => (
           <div key={tag} className="flex items-center gap-1 rounded-md bg-blue-100 px-2 py-1 text-sm text-blue-800">
             <span>{tag}</span>
-            <button type="button" onClick={() => handleRemoveTag(tag)} className="text-blue-600 hover:text-blue-800">
+            <button
+              aria-label="Remove Tag"
+              type="button"
+              onClick={() => handleRemoveTag(tag)}
+              className="text-blue-600 hover:text-blue-800"
+            >
               <X size={14} />
             </button>
           </div>
@@ -66,6 +71,7 @@ export const TagInput = ({ tags, availableTags = [], onChange, placeholder = "Ad
             className="flex-1 px-3 py-2 text-sm outline-none"
           />
           <button
+            aria-label="Add Tag"
             type="button"
             onClick={() => handleAddTag(inputValue)}
             className="mr-1 px-2 py-1 text-gray-500 hover:text-gray-700"

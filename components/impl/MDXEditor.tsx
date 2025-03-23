@@ -37,6 +37,7 @@ export const MDXEditor = ({ id, label, value, onChange, placeholder = "", rows =
           {label}
         </label>
         <button
+          aria-label={showPreview ? "Edit" : "Preview"}
           type="button"
           onClick={() => setShowPreview(!showPreview)}
           className="text-xs text-blue-600 hover:text-blue-500"

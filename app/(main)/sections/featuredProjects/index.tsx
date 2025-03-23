@@ -29,7 +29,11 @@ export const FeaturedProjects = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Link href="/projects" className={buttonVariants({ size: "lg", variant: "default" })}>
+          <Link
+            href="/projects"
+            className={buttonVariants({ size: "lg", variant: "default" })}
+            aria-label="View All Projects"
+          >
             View All Projects
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
