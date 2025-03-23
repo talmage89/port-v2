@@ -1,15 +1,52 @@
 "use client";
 
 import * as React from "react";
-import { Command as CommandPrimitive } from "cmdk";
 import { SearchIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>) {
+// Custom command component to replace cmdk
+const CommandPrimitive = {
+  Root: ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div className={className} {...props}>{children}</div>
+  ),
+  Input: ({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
+    <input className={className} {...props} />
+  ),
+  List: ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div className={className} {...props}>{children}</div>
+  ),
+  Empty: ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div className={className} {...props}>{children}</div>
+  ),
+  Group: ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div className={className} {...props}>{children}</div>
+  ),
+  Item: ({ className, onSelect, children, ...props }: React.HTMLAttributes<HTMLDivElement> & { onSelect?: () => void }) => (
+    <div 
+      className={className} 
+      onClick={onSelect}
+      role="option"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' && onSelect) {
+          onSelect();
+        }
+      }}
+      {...props}
+    >
+      {children}
+    </div>
+  ),
+  Separator: ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div className={className} {...props} />
+  ),
+};
+
+function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Root>) {
   return (
-    <CommandPrimitive
+    <CommandPrimitive.Root
       data-slot="command"
       className={cn(
         "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
