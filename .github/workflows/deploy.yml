@@ -32,9 +32,7 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            # Create a backup directory if it doesn't exist
             mkdir -p ~/backups
-            # Backup the database (adjust as needed for your PostgreSQL configuration)
             pg_dump -h localhost -U ${{ secrets.DB_USER }} -d ${{ secrets.DB_NAME }} -f ~/backups/backup_$(date +%Y%m%d_%H%M%S).sql
 
       - name: Deploy
@@ -45,9 +43,10 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            set -e 
             cd ${{ secrets.PROJECT_PATH }}
             git pull
             npm install
-            npm run build
+            NODE_OPTIONS="--max-old-space-size=512" npm run build
             npm run migrate
             sudo -u ${{ secrets.USER }} pm2 restart ${{ secrets.PM2_APP_NAME }}
