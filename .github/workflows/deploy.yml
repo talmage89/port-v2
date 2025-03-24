@@ -57,9 +57,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e 
-            pwd
             cd ${{ secrets.PROJECT_PATH }}
-            pwd
             git pull
             npm install
             npm run migrate
