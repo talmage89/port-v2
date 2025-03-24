@@ -72,6 +72,8 @@ jobs:
           source: ".next/,public/,package.json"
           target: "${{ secrets.PROJECT_PATH }}"
           strip_components: 0
+          overwrite: true
+          rm: true
 
       - name: Restart application
         uses: appleboy/ssh-action@v1.2.2
@@ -80,4 +82,4 @@ jobs:
           username: github-deploy
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          script: sudo -u ${{ secrets.USER }} pm2 restart ${{ secrets.PM2_APP_NAME }}
+          script: pm2 restart ${{ secrets.PM2_APP_NAME }}
