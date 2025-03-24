@@ -52,10 +52,10 @@ export const About = () => {
                   <span className="w-24 font-medium text-slate-800 dark:text-slate-300">Email:</span>
                   <a
                     aria-label="Email"
-                    href="mailto:talmage.bergeson@gmail.com"
+                    href="mailto:info@talmage.dev"
                     className="ml-auto text-blue-600 hover:underline dark:text-blue-400"
                   >
-                    talmage.bergeson@gmail.com
+                    info@talmage.dev
                   </a>
                 </li>
                 <li className="flex flex-wrap items-start">

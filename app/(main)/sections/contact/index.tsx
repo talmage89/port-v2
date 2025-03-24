@@ -38,10 +38,10 @@ export const Contact = () => {
                       <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Email</p>
                       <a
                         aria-label="Email"
-                        href="mailto:talmage.bergeson@gmail.com"
+                        href="mailto:info@talmage.dev"
                         className="font-medium text-blue-600 hover:underline dark:text-blue-400"
                       >
-                        talmage.bergeson@gmail.com
+                        info@talmage.dev
                       </a>
                     </div>
                   </div>

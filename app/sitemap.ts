@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/seo";
 
 // Force this to be a Server Component that only runs at request time
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export const revalidate = 0; // Never cache
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     const { db } = await import("@/db");
-    
+
     const projects = await db.query.projects.findMany({
       columns: { id: true },
       with: {

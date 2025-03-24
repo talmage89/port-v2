@@ -82,14 +82,4 @@ export const projectsData = [
     featured: false,
     tags: ["Django", "React", "PostgreSQL", "Docker", "Stripe", "Shippo"],
   },
-  {
-    title: "N8N Workflow Automation",
-    description:
-      "Personalized and containerized n8n workflow automation setup, orchestrating data flows between systems, handling automated notifications, and streamlining business processes with custom Docker configuration.",
-    imageUrl: "/img/n8n.png",
-    liveUrl: "https://n8n.pixelvalleysupply.com",
-    codeUrl: "https://github.com/talmage89/pvs-n8n",
-    featured: false,
-    tags: ["n8n", "Docker", "PostgreSQL", "Redis", "Nginx", "Automation"],
-  },
 ];
