@@ -1,8 +1,12 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/seo";
-import { db } from "@/db";
+
+// Force this to be a Server Component that only runs at request time
+export const dynamic = 'force-dynamic';
+export const revalidate = 0; // Never cache
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Static routes always included
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: siteConfig.url,
@@ -19,6 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   try {
+    const { db } = await import("@/db");
+    
     const projects = await db.query.projects.findMany({
       columns: { id: true },
       with: {
@@ -40,6 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return [...staticRoutes, ...projectRoutes];
   } catch (error) {
     console.error("Failed to generate dynamic sitemap routes:", error);
+    // Fallback to static routes only if database connection fails
     return staticRoutes;
   }
 }
