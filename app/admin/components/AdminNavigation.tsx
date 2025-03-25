@@ -32,6 +32,7 @@ export default function AdminNavigation() {
     { name: "Projects", href: "/admin/projects" },
     { name: "Skills", href: "/admin/skills" },
     { name: "Case Studies", href: "/admin/case-studies" },
+    { name: "Blog", href: "/admin/blog" },
   ];
 
   return (

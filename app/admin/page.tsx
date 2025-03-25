@@ -47,6 +47,7 @@ export default async function AdminDashboard() {
         <AdminCard title="Projects" description="Manage your portfolio projects" href="/admin/projects" />
         <AdminCard title="Skills" description="Manage your skills and categories" href="/admin/skills" />
         <AdminCard title="Case Studies" description="Manage project case studies" href="/admin/case-studies" />
+        <AdminCard title="Blog" description="Manage your blog posts" href="/admin/blog" />
       </div>
 
       {/* Add session debugger */}

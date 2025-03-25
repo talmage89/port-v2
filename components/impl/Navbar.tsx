@@ -5,9 +5,9 @@ import { useState } from "react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const navLinks = [
-  { href: "/#about", text: "About" },
   { href: "/#skills", text: "Skills" },
   { href: "/projects", text: "Projects" },
+  { href: "/blog", text: "Blog" },
   { href: "/#contact", text: "Contact" },
 ];
 

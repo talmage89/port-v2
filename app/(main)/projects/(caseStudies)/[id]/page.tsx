@@ -6,14 +6,13 @@ import Image from "next/image";
 import { buttonVariants } from "@/components/ui";
 import { MDX } from "@/components/impl/MDX";
 import JsonLd from "@/components/JsonLd";
-import { siteConfig } from "@/lib/seo";
+import * as seo from "@/lib/seo";
 import { Metadata } from "next";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
-// Generate metadata for each project page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const projectId = parseInt(id);
@@ -36,13 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  return {
+  return seo.generateMetadata({
     title: project.title,
     description: project.description || undefined,
-    openGraph: {
-      images: project.imageUrl ? [project.imageUrl] : [],
-    },
-  };
+    image: project.imageUrl || undefined,
+  });
 }
 
 export default async function ProjectCaseStudy({ params }: { params: Promise<{ id: string }> }) {
@@ -69,7 +66,6 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<{ i
   const tags = project.projectsToProjectTags.map((relation) => relation.tag.name);
   const technologies = caseStudy.technologies.map((tech) => tech.name);
 
-  // Create structured data for the project
   const projectStructuredData = {
     name: project.title,
     description: project.description,
@@ -84,26 +80,25 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<{ i
     codeRepository: project.codeUrl || undefined,
   };
 
-  // Create breadcrumb structured data
   const breadcrumbStructuredData = {
     itemListElement: [
       {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: `${siteConfig.url}/`,
+        item: `${seo.siteConfig.url}/`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Projects",
-        item: `${siteConfig.url}/projects`,
+        item: `${seo.siteConfig.url}/projects`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: project.title,
-        item: `${siteConfig.url}/projects/${projectId}`,
+        item: `${seo.siteConfig.url}/projects/${projectId}`,
       },
     ],
   };
