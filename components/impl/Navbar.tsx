@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { Search } from "lucide-react";
+import { ChatDialog } from "./ChatDialog";
 
 const navLinks = [
   { href: "/#skills", text: "Skills" },
@@ -13,10 +15,24 @@ const navLinks = [
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Add keyboard shortcut handler
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setIsSearchOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   function navLink(href: string, text: string, key: string) {
     return (
@@ -55,11 +71,26 @@ export const Navbar = () => {
         {/* Desktop navigation and theme toggle */}
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link, index) => navLink(link.href, link.text, index.toString()))}
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="flex items-center gap-2 text-sm font-medium text-slate-800 transition-all hover:text-slate-900 dark:text-gray-300 dark:hover:text-gray-100"
+            aria-label="Search"
+          >
+            <Search className="h-4 w-4" />
+            <span className="hidden md:inline">Search</span>
+          </button>
           <ThemeToggle />
         </div>
 
         {/* Mobile menu button */}
         <div className="flex items-center gap-4 md:hidden">
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="p-2"
+            aria-label="Search"
+          >
+            <Search className="h-5 w-5" />
+          </button>
           <ThemeToggle />
           <button className="p-2" onClick={toggleMenu} aria-label="Toggle menu">
             <div className={`transition-transform duration-300 ${isMenuOpen ? "rotate-90" : ""}`}>
@@ -89,6 +120,9 @@ export const Navbar = () => {
           {navLinks.map((link, index) => mobileNavLink(link.href, link.text, index.toString()))}
         </nav>
       </div>
+
+      {/* Chat Dialog */}
+      <ChatDialog open={isSearchOpen} onOpenChange={setIsSearchOpen} />
     </header>
   );
 };

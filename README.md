@@ -14,6 +14,7 @@ A sleek, performance-optimized portfolio website built with Next.js 15, React 19
 - **Admin Dashboard**: Content management interface for easy updates
 - **Database Integration**: PostgreSQL with Drizzle ORM for type-safe queries
 - **Authentication**: Secure user authentication with NextAuth.js
+- **AI Chat Assistant**: Integrated AI chat for helping users navigate the site
 - **Responsive Design**: Tailwind CSS for a fully responsive experience across all devices
 - **SEO Optimized**: Built-in sitemap generation and robots.txt configuration
 - **Markdown Support**: Content editing with MDX for rich formatting options
@@ -137,6 +138,29 @@ This project uses Drizzle ORM with PostgreSQL. The database schema is defined in
   ```bash
   npm run studio
   ```
+
+## 🤖 AI Chat Feature
+
+The portfolio includes an AI chat feature that allows visitors to ask questions about your skills, projects, and how to navigate the site. This feature uses the Anthropic Claude API for natural language processing.
+
+### Setup
+
+1. Get an API key from [Anthropic](https://www.anthropic.com/)
+2. Add your API key to the `.env` file:
+   ```
+   ANTHROPIC_API_KEY=your_api_key_here
+   ```
+3. Run the necessary database migrations to create the chat_queries table:
+   ```bash
+   npm run migrate
+   ```
+4. The chat feature is configured with a daily usage limit (default: 10 questions per IP) which can be adjusted in the API routes.
+
+### Implementation Details
+
+- Chat UI: The chat dialog is accessible via a search icon in the navigation bar or by pressing Cmd+K/Ctrl+K
+- Backend: API routes handle message processing and rate limiting
+- Analytics: Basic usage tracking is implemented to monitor questions and identify common queries
 
 ## 🧰 Project Structure
 

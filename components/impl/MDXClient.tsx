@@ -7,7 +7,7 @@ export const MDXClient = ({ content }: { content: string }) => {
   if (!content) return null;
 
   return (
-    <div className="flex flex-col gap-2 sm:gap-3">
+    <div className="flex flex-col gap-2 sm:gap-3 [&>*:last-child]:mb-0">
       <ReactMarkdown components={components}>{content}</ReactMarkdown>
     </div>
   );
